@@ -1,4 +1,4 @@
-Splunk for DB Networks
+TA-DB_Networks
 ======================
 
 Latest documentation is posted on http://ta-db-networks.readthedocs.io
