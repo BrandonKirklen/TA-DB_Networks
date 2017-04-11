@@ -2,4 +2,6 @@
 
 ## About the TA
 
-**App Author:** Brandon Kirklen 
+**App Author:** Brandon Kirklen
+
+- 
