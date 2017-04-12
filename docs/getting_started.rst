@@ -7,20 +7,24 @@ DBN TA Source Types
 Splits incoming feed into:
 
 1. ``system_counters``: This source type is used for various system counter information including
+
 	- ``cnt``: An external dump of the internal counter's page, lists stats for incoming feed and engine processing
 	- ``sys``: Contains system level information including free memory, cache, and system uptime
 	- ``slowsys``: A more complete set of system level information including airflow readings, disk usage, and wear indicators
 	- ``dbfwsys``: Information specific to the DBFW process running
 2. ``sqli_events``: SQL injection events will be associated with this sourcetype. This includes two subevent types
+
 	- ``distinct_event``: description of the first sql statement which is deemed a potential sql injection attack
 	- ``repeat_event``: events which match an injection on a statement already alerted on
 3. ``discovery_events``: These alerts are triggered in response to new events within the flows being monitored but without rising to the level of an attack.
+
 	- ``mds_new_user``: A new user is seen for the first time
 	- ``mds_new_service``: a new service is seen for the first time
 	- ``mds_new_host``: a new host is seen for the first time
 	- ``mds_new_listener``: a new listener is seen for the first time
 	- ``tally_new_ipseity``: a new context is seen linking client and servicer in dimensions (tally board, user, service, client, server)
 4. ``health_events``: contains events mainly involving engineering metrics
+
 	- ``heart_beat``: used to monitor system up status on a more frequent basis than ``dbfwsys``
 	- ``engine_start``: used to monitor for engine restarts
 	- ``archive``: Indicates status of overnight system archive tool
@@ -144,9 +148,9 @@ Event report messages are generated as soon as an event is detected. There are t
 types of event report messages:
 
 - ``distinct_event`` messages pertain to new unique SQL statements that are detected
-  as possible threates. Distinct events have a Signature ID=``0`` and name=``distinct_event``
+  as possible threates. Distinct events have a Signature ID= ``0`` and name= ``distinct_event``
 - ``repeat_event`` messages represent repeated executions of previously detected SQL statements.
-  Repeat events have a Signature ID=``1`` and name=``repeat_event``
+  Repeat events have a Signature ID= ``1`` and name= ``repeat_event``
 
 Both messages contain the same information, but are distinguished by the labels above appearing in the name field of the CEF prefix.
 
