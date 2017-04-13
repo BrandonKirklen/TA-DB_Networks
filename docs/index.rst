@@ -9,4 +9,5 @@ Latest documentation is posted on http://ta-db-networks.readthedocs.io
    :maxdepth: 2
 
    overview
-   getting_started
+   dbn_out
+   ta_in
