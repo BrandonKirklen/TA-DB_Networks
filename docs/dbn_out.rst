@@ -216,7 +216,7 @@ useful to DB Networks customer support and development personnel if an issue ari
 
 ``sys``::
 
-  2017-03-14T19:27:32.144918-05:00 dbfw CEF:0|Engineering|ADF|Dev Build|12|sys|0|
+  2017-03-14T19:27:32.144918-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|12|sys|0|
   cs1Label=system identifier cs1=unknown rt=1489537652144 os_uptime=19946 os_loadavg_0=1
   os_loadavg_1=1 os_loadavg_2=0 os_freemem=940785664 os_totalmem=8339775488 sys_user=346203
   sys_nice=153 sys_system=69859 sys_idle=7503488 sys_iowait=33658 sys_irq=7909 sys_softirq=7575
@@ -240,13 +240,163 @@ useful to DB Networks customer support and development personnel if an issue ari
 
 ``slowsys``::
 
-  2017-03-14T19:27:38.146333-05:00 dbfw CEF:0|Engineering|ADF|Dev Build|13|slowsys|0|
+  2017-03-14T19:27:38.146333-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|13|slowsys|0|
   cs1Label=system identifier cs1=unknown rt=1489537658145 disk_root_total=57521228
   disk_root_avail=41946336 disk_boot_total=194235 disk_boot_avail=82772 disk_maint_total=2818080
   disk_maint_avail=1583852 vers=0
 
 ``dbfwsys``::
 
-  2017-03-14T19:27:34.173796-05:00 dbfw CEF:0|Engineering|ADF|Dev Build|14|dbfwsys|0|
+  2017-03-14T19:27:34.173796-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|14|dbfwsys|0|
   cs1Label=system identifier cs1=unknown rt=1489537654172 dbfw_pid=88958 dbfw_state=0
   dbfw_userCpu=9344 dbfw_sysCpu=791 dbfw_numThread=21 dbfw_VmSize=940736512 dbfw_VmRSS=524038144
+
+New Discovery Messages
+**********************
+
+New discovery syslog messages are sent when the DBN-6300 identifies a new user,
+service, host, listener, or context linking client and server in dimensions (ipseity).
+
+The fields associated with these various messages are:
+
++--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| Signature ID | Name                               | Description                                                                                                            |
++==============+====================================+========================================================================================================================+
+| 6            | ``mds_new_user``                   | * ``user_name`` =<string = non-empty user name>                                                                        |
+|              |                                    | * ``default_schema`` =<string = default schema for new user>                                                           |
++--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| 7            | ``mds_new_service``                | * ``service_name`` = <string = service_name>                                                                           |
+|              |                                    | * ``service_name_type`` =<string =service type (service|SID|global name)>                                              |
+|              |                                    | * ``dialect`` =<string = database dialect (Oracle|MS Sql)>                                                             |
++--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| 8            | ``mds_new_host``                   | * ``realm`` =<string = realm name>                                                                                     |
+|              |                                    | * ``addr`` =<string =IPV4 address>                                                                                     |
++--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| 9            | ``mds_new_listener``               | * ``realm`` = <string = realm name>                                                                                    |
+|              |                                    | * ``addr`` = <string = IPV4 address>                                                                                   |
+|              |                                    | * ``port`` = <integer = TCP/IP port>                                                                                   |
++--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| 10           | ``tally_new_ipseity``              | * ``tally_board`` = <string = identifier for tally board, currently main>                                              |
+|              |                                    | * [ ``user_name`` = <string = non-empty user name>]                                                                    |
+|              |                                    | * [ ``service_name`` = <string = non-empty service name]                                                               |
+|              |                                    | * ``client_realm`` = <string = client realm name>                                                                      |
+|              |                                    | * ``client_addr`` = <string = IPV4 addr of client>                                                                     |
+|              |                                    | * ``server_realm`` = <string = server listener realm name>                                                             |
+|              |                                    | * ``server_addr`` = <string = IPV4 addr of server listener>                                                            |
+|              |                                    | * ``server_port`` = <int = TCP/IP port of server listener>                                                             |
+|              |                                    | * ``client_ipseities`` = <int = pre-existing ipseities with matching client host -- zero implies this is the first>    |
+|              |                                    | * ``server_ipseities`` = <int = pre-existing ipseities with matching server host>.                                     |
+|              |                                    | * [ ``server_service_ipseities`` = <int = pre-existing ipseities with matching server host and service>]               |
+|              |                                    | * [ ``server_service_user_ipseities`` = <int = pre-existing ipseities with matching server host, service, and user>]   |
++--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+
+Example Messages:
+
+``mds_new_user`` ::
+
+    2017-03-14T19:00:22.970916-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_user|5|
+    cs1Label=system identifier cs1=none rt=1489536022968 realm=default user_name=XXCC default_schema=XXCC
+
+
+``mds_new_service`` ::
+
+    2017-03-14T19:27:14.737219-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|7|mds_new_service|5|
+    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489537634735 service_name=master
+    service_name_type=service dialect=Sql Server
+
+``mds_new_host`` ::
+
+    2017-03-13T19:52:09.712603-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_host|5|
+    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489452729711 realm=default addr=10.0.0.1
+
+``mds_new_listener`` ::
+
+    2017-03-14T19:00:22.988379-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|9|mds_new_listener|5|
+    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536022980 realm=default addr=10.0.0.1 port=1305
+
+``tally_new_ipseity`` ::
+
+    2017-03-14T19:00:28.548773-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|10|tally_new_ipseity|5|
+    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536028542 tally_board=main service_name=master
+    client_realm=default client_addr=10.0.0.1 server_realm=default server_addr=10.0.0.2
+    server_port=1163 client_ipseities=0 server_ipseities=1 server_service_ipseities=0
+
+Insider Threat Event Messages
+*****************************
+
+Insider threat messages are sent when the DBN-6300 sees statement executions meeting
+the criteria of an insider threat rule that has been configured to monitor and syslog.
+The purpose of these messages is alert customers to policy and stability violations in a monitored network.
+Insider threat rules are defined in terms of sets or patterns describing data flows.
+A data flow is the unique combination of a partially or fully qualified table name
+(for example, “master.sys.databases” specifies database, schema, and relation, but not server)
+mentioned in a specific network context (i.e., client IP, server IP, server Port, database service,
+and database user). When a statement is executed, the DBN-6300 analyzes the SQL text semantically,
+looks up the corresponding data flow (or flows if there are more than one qualified name in the statement),
+and checks whether that flow meets the criteria of an insider threat rule. If the
+rule’s action is configured to write to syslog when it fires, the details of the
+data flow and unique identifiers for several aspects of the flow and rule are conveyed
+in messages described below.
+
+Example::
+
+  2017-03-14T19:21:21.109481-05:00 dbfw adf: CEF:0|DB Networks, Inc.|ADF|Dev Build|18|it_threat_event|5|
+  cs1Label=system identifier cs1=00:00:00:00:00:00 eventId=2174 tix_id=1855 tix_annotation=New general rule 1489537194368
+  spec_id=1857 spec_type=general spec_annotation=Catchall cat_id=222 category_name=sys.syslog
+  flow_id=1424 start=1336601400 end=1336601400 rt=1336601400 server= database=master schema=
+  relation=filerepository mode=read user_id=293 user_name=sa service_name=master
+  dialect=Sql Server clientIP=10.0.0.1 serverIP=10.0.0.2 listener_port=1305
+
+
+As with the other messages described above, the first part of the message contains
+the elements of the standard CEF format. The event-specific fields are described in the following table.
+
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field           | Description                                                                                                                                                                   |
++=================+===============================================================================================================================================================================+
+| eventId         | Unique event ID used to look up the event in the DBN event log.                                                                                                               |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| tix_id          | Rule system transaction ID. Rule configuration changes are transactional, so each rule belongs to one transaction only.                                                       |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| tix_annotation  | Rule system transaction annotation.                                                                                                                                           |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| spec_id         | Unique identifier for the rule that generated the event.                                                                                                                      |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| spec_type       | Type of rule that generated the event. This can be ‘general’, ‘stable-qname-contexts’, or ‘stable-context-qnames’ for policy, stable qualified name, or stable context rules. |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| spec_annotation | Optional user annotation of the rule.                                                                                                                                         |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| cat_id          | Unique identifier for the set of actions taken when the rule associated with this event fires.                                                                                |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| category_name   | Name for the set of actions taken when the rule associated with this event fires. Typically, this is ‘sys.syslog’.                                                            |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| flow_id         | Unique identifier for the data flow ID that triggered this event.                                                                                                             |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| first_seen_tid  | First time the triggering data flow was observed by DBN-6300.                                                                                                                 |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| last_seen_tid   | Last time the triggering data flow was observed by DBN-6300.                                                                                                                  |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| server          | Server name, if specified, in the qualified name mentioned by the sql statement that triggered this event.                                                                    |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| database        | Database name, if specified, in the qualified name mentioned by the sql statement that triggered this event.                                                                  |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| schema          | Schema name, if specified, in the qualified name mentioned by the sql statement that triggered this event.                                                                    |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| relation        | Relation name (for example, table or view) in the qualified name mentioned by the sql statement that triggered this event.                                                    |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| mode            | Mode of access (read or write) of the qualified name mentioned by the sql statement that triggered this event.                                                                |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| user_id         | Unique identifier for the database user employed to execute that statement that triggered this event.                                                                         |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| user_name       | Database user name used to execute the statement that triggered this event.                                                                                                   |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| service_name    | Service name against which the statement that triggered this event was executed.                                                                                              |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| dialect         | Dialect (for example, Sql Server) of the above service name.                                                                                                                  |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| clientIP        | Client IP address employed to execute the statement that triggered this event.                                                                                                |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| serverIP        | Server IP address against which the statement that triggered this event was executed.                                                                                         |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| listener_port   | Port of the above server IP.                                                                                                                                                  |
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
