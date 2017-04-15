@@ -88,7 +88,7 @@ Signature ID and Name Values
    If you expect syslog messages greater than 8K,
    increase the default message size to avoid truncation.
 
-DBN-6300 Syslog Message Detail
+DBN 6300 Syslog Message Detail
 ------------------------------
 
 Engine Restart Message
