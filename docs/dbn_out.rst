@@ -101,7 +101,7 @@ contact customer service to investigate the cause.
 
 A typical message resembles the following::
 
-  2017-03-14T18:57:33.449245-05:00 dbfw adf: CEF:0|DB Networks|ADF|2.2.13|3|engine_start|
+  <133>2017-03-14T18:57:33.449245-05:00 dbfw adf: CEF:0|DB Networks|ADF|2.2.13|3|engine_start|
   5|cs1Label=system identifier cs1=00:00:00:00:00:00
 
 The message is identified by Signature ID= ``3`` and name= ``engine_start``.
@@ -123,7 +123,7 @@ A typical ``distinct_event`` resembles the following. A ``repeat_event`` has the
 
 ::
 
-  2017-03-14T19:27:32.883848-05:00 dbfw adf: CEF:0|DB Networks|ADF|2.2.13|0|distinct_event|
+  <133>2017-03-14T19:27:32.883848-05:00 dbfw adf: CEF:0|DB Networks|ADF|2.2.13|0|distinct_event|
   5|cs1Label=system identifier cs1=00:00:00:00:00:00 externalId=2737 cnt=1 rt=1489537652883
   start=1336602182934 destinationServiceName=master cn1Label=statement identifier cn1=2736
   cat=structural dst=10.10.10.77 dpt=1305 src=10.10.10.186 spt=3585 cs2Label=score cs2=0.500
@@ -181,7 +181,7 @@ information useful to DB Networks' Customer Support personnel.
 
 Example ``cnt`` message::
 
-  2017-03-14T19:27:30.140860-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|11|cnt|0|
+  <133>2017-03-14T19:27:30.140860-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|11|cnt|0|
   cs1Label=system identifier cs1=unknown rt=1489537650140 xtime_T01=03/14/17 18:57:32
   xtime_T02=03/14/17 19:27:30 xtime_T03=1 xtime_T04=0:29:58 xtime_T05=05/09/12 17:22:36
   xcap_X13=0 xcap_X01=1928135 xcap_X02=0 xcap_X33=0 xcap_X14=0.00% xcap_X03=0 xcap_X12=0
@@ -216,7 +216,7 @@ useful to DB Networks customer support and development personnel if an issue ari
 
 ``sys``::
 
-  2017-03-14T19:27:32.144918-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|12|sys|0|
+  <133>2017-03-14T19:27:32.144918-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|12|sys|0|
   cs1Label=system identifier cs1=unknown rt=1489537652144 os_uptime=19946 os_loadavg_0=1
   os_loadavg_1=1 os_loadavg_2=0 os_freemem=940785664 os_totalmem=8339775488 sys_user=346203
   sys_nice=153 sys_system=69859 sys_idle=7503488 sys_iowait=33658 sys_irq=7909 sys_softirq=7575
@@ -240,14 +240,14 @@ useful to DB Networks customer support and development personnel if an issue ari
 
 ``slowsys``::
 
-  2017-03-14T19:27:38.146333-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|13|slowsys|0|
+  <133>2017-03-14T19:27:38.146333-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|13|slowsys|0|
   cs1Label=system identifier cs1=unknown rt=1489537658145 disk_root_total=57521228
   disk_root_avail=41946336 disk_boot_total=194235 disk_boot_avail=82772 disk_maint_total=2818080
   disk_maint_avail=1583852 vers=0
 
 ``dbfwsys``::
 
-  2017-03-14T19:27:34.173796-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|14|dbfwsys|0|
+  <133>2017-03-14T19:27:34.173796-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|14|dbfwsys|0|
   cs1Label=system identifier cs1=unknown rt=1489537654172 dbfw_pid=88958 dbfw_state=0
   dbfw_userCpu=9344 dbfw_sysCpu=791 dbfw_numThread=21 dbfw_VmSize=940736512 dbfw_VmRSS=524038144
 
@@ -294,29 +294,29 @@ Example Messages:
 
 ``mds_new_user`` ::
 
-    2017-03-14T19:00:22.970916-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_user|5|
+    <133>2017-03-14T19:00:22.970916-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_user|5|
     cs1Label=system identifier cs1=none rt=1489536022968 realm=default user_name=XXCC default_schema=XXCC
 
 
 ``mds_new_service`` ::
 
-    2017-03-14T19:27:14.737219-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|7|mds_new_service|5|
+    <133>2017-03-14T19:27:14.737219-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|7|mds_new_service|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489537634735 service_name=master
     service_name_type=service dialect=Sql Server
 
 ``mds_new_host`` ::
 
-    2017-03-13T19:52:09.712603-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_host|5|
+    <133>2017-03-13T19:52:09.712603-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_host|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489452729711 realm=default addr=10.0.0.1
 
 ``mds_new_listener`` ::
 
-    2017-03-14T19:00:22.988379-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|9|mds_new_listener|5|
+    <133>2017-03-14T19:00:22.988379-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|9|mds_new_listener|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536022980 realm=default addr=10.0.0.1 port=1305
 
 ``tally_new_ipseity`` ::
 
-    2017-03-14T19:00:28.548773-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|10|tally_new_ipseity|5|
+    <133>2017-03-14T19:00:28.548773-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|10|tally_new_ipseity|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536028542 tally_board=main service_name=master
     client_realm=default client_addr=10.0.0.1 server_realm=default server_addr=10.0.0.2
     server_port=1163 client_ipseities=0 server_ipseities=1 server_service_ipseities=0
@@ -340,7 +340,7 @@ in messages described below.
 
 Example::
 
-  2017-03-14T19:21:21.109481-05:00 dbfw adf: CEF:0|DB Networks, Inc.|ADF|Dev Build|18|it_threat_event|5|
+  <133>2017-03-14T19:21:21.109481-05:00 dbfw adf: CEF:0|DB Networks, Inc.|ADF|Dev Build|18|it_threat_event|5|
   cs1Label=system identifier cs1=00:00:00:00:00:00 eventId=2174 tix_id=1855 tix_annotation=New general rule 1489537194368
   spec_id=1857 spec_type=general spec_annotation=Catchall cat_id=222 category_name=sys.syslog
   flow_id=1424 start=1336601400 end=1336601400 rt=1336601400 server= database=master schema=
