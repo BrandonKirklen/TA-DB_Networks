@@ -11,3 +11,4 @@ Latest documentation is posted on http://ta-db-networks.readthedocs.io
    overview
    dbn_out
    ta_in
+   release_notes

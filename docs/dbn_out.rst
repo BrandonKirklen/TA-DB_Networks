@@ -4,7 +4,8 @@ DBN 6300 Syslog Messages
 DBN 6300 Message Overview
 -------------------------
 
-Syslog messages forwarded from the DBN-6300 are formatted to meet the CEF specification.
+Syslog messages forwarded from the DBN-6300 are formatted to meet the CEF header specification.
+As of 2.2.14, dbn output will begin phasing out CEF label support in favor of custom fields directly in the syslog message.
 
 Syslog Message Format:
 
@@ -28,6 +29,8 @@ Syslog Message Format:
 | cs1Label         | system identifier                    |
 +------------------+--------------------------------------+
 | cs1              | System serial number                 |
++------------------+--------------------------------------+
+| system_identifier| System serial number                 |
 +------------------+--------------------------------------+
 | Message          | Varies by event                      |
 +------------------+--------------------------------------+
