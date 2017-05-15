@@ -9,6 +9,7 @@ Latest documentation is posted on http://ta-db-networks.readthedocs.io
    :maxdepth: 2
 
    overview
+   installation_and_configuration
+   user_guide
    dbn_out
-   ta_in
    release_notes
