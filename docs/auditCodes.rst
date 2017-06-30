@@ -6,8 +6,10 @@ Audit Codes
 2.2.14
 ------
 
-``secOps`` (1XXX)
+``secOps`` (1000-1999)
 *****************
+
+Security Operations (``secOps``):
 
 +-------+------------------------------------------------------------+----------------+
 | Code  | Message                                                    | Target         |
@@ -83,8 +85,10 @@ Audit Codes
 | 1034  | Update user interface port configuration                   | UIPorts        |
 +-------+------------------------------------------------------------+----------------+
 
-``sysOps`` (2XXX)
+``sysOps`` (2000-2999)
 *****************
+
+System Operations (``sysOps``):
 
 +------+------------------------------------------+-------------------+
 | Code | Message                                  | Target            |
@@ -160,8 +164,10 @@ Audit Codes
 | 2034 | Update registry                          | Registry          |
 +------+------------------------------------------+-------------------+
 
-``appOps`` (3XXX)
+``appOps`` (3000-3999)
 *****************
+
+Application Operations (``appOps``):
 
 +------+------------------------------------------+-------------------+
 | 3000 | Map a service to a database              | Mapping           |
@@ -189,8 +195,10 @@ Audit Codes
 | 3011 | Terminal session not authorized for tail | Terminal          |
 +------+------------------------------------------+-------------------+
 
-``uiCalls`` (4XXX)
+``uiCalls`` (4000-4999)
 ******************
+
+UI Route Details (``uiCalls``):
 
 +------+---------------+
 | Code | Message       |
@@ -198,8 +206,10 @@ Audit Codes
 | 4000 | UI route logs |
 +------+---------------+
 
-``cliCommands`` (5XXX)
+``cliCommands`` (5000-5999)
 **********************
+
+Command Line Interface Command Details (``cliCommands``):
 
 +------+--------------------+
 | Code | Message            |
@@ -209,8 +219,10 @@ Audit Codes
 | 5001 | CLI command failed |
 +------+--------------------+
 
-``ldapAuth`` (6XXX)
+``ldapAuth`` (6000-6999)
 ********************
+
+LDAP Authentication (``ldapAuth``):
 
 +------+--------------------------+
 | Code | Message                  |
@@ -218,8 +230,10 @@ Audit Codes
 | 6000 | Ldap authentication logs |
 +------+--------------------------+
 
-``aclOps`` (7XXX)
+``aclOps`` (7000-7999)
 *****************
+
+Access Control List Operations (``aclOps``):
 
 +------+---------------------------+
 | Code | Message                   |
@@ -229,8 +243,10 @@ Audit Codes
 | 7001 | Access control list debug |
 +------+---------------------------+
 
-``certOps`` (8XXX)
+``certOps`` (8000-8999)
 ******************
+
+Certificate Operations (``certOps``):
 
 +------+-------------------------------+
 | Code | Message                       |
