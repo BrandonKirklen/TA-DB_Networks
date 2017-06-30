@@ -324,6 +324,22 @@ Example Messages:
     client_realm=default client_addr=10.0.0.1 server_realm=default server_addr=10.0.0.2
     server_port=1163 client_ipseities=0 server_ipseities=1 server_service_ipseities=0
 
+Audit Messages
+**************
+
+Audit messages are an optional syslog output configured on DBN-6300 under Settings > Advanced > Audit Log.
+The purpose of these messages to to provide a record of selected transactions on the DBN unit. The details of these messages are
+described below.
+
+``audit`` ::
+
+  <133>2017-04-26T18:59:11Z dbfw adf: CEF:0|DB Networks|ADF|2.2.13|20|audit|0|
+  system_identifier=FW42-QA-0006 cs1Label=system identifier cs1=FW42-QA-0006 start=1493251151986 category=sysOps
+  auditCode=2030 auditMessage="Apply update" userId=admin sessionId=7rIowveGTOhxKmz6tTJQYmRzlvnZ5vou target="Update:P_2.2.13"
+
+Audit syslog messages will have a ``category``, ``auditCode``, ``auditMessage``, ``userId``, ``sessionId`` and ``target`` when
+applicable. 
+
 Insider Threat Event Messages
 *****************************
 
