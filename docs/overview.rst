@@ -16,6 +16,7 @@ Splunk/DBN Version Compatibility
 =============== ============= ============
 Splunk Version  App Version   DBN Version
 Splunk 6.5.2    1.0.0         2.2.14
+Splunk 6.6.1    2.0.0         3.0.0
 =============== ============= ============
 
 

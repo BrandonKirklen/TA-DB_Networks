@@ -2,6 +2,19 @@
 Release Notes
 =============
 
+Version 2.0.0
+^^^^^^^^^^^^^
+
+New IT Threat Event Types
+-------------------------
+In this release, IT Threat source types are expanded into ``ITClusteredFlow``,
+``ITNewCluster``, ``ITObsoleteCluster``, ``ITClusterActivity``, ``ITAutoLearned``,
+``ITPolicyActivity``. These source types are used by the new IT Threat suite of
+features in dbn version 3.0.0. 
+
+Version 1.0.0
+^^^^^^^^^^^^^
+
 Dealing With Custom Fields
 --------------------------
 
