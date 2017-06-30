@@ -338,7 +338,7 @@ described below.
   auditCode=2030 auditMessage="Apply update" userId=admin sessionId=7rIowveGTOhxKmz6tTJQYmRzlvnZ5vou target="Update:P_2.2.13"
 
 Audit syslog messages will have a ``category``, ``auditCode``, ``auditMessage``, ``userId``, ``sessionId`` and ``target`` when
-applicable. For more information about codes and messages, see `auditCodes`_.
+applicable. For more information about codes and messages, see auditCodes_.
 
 Insider Threat Event Messages
 *****************************
