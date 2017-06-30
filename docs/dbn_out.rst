@@ -327,7 +327,7 @@ Example Messages:
 Audit Messages
 **************
 
-Audit messages are an optional syslog output configured on DBN-6300 under Settings > Advanced > Audit Log.
+Audit messages are an optional syslog output configured on DBN-6300 under ``Settings > Advanced > Audit Log``.
 The purpose of these messages to to provide a record of selected transactions on the DBN unit. The details of these messages are
 described below.
 
