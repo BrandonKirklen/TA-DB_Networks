@@ -13,3 +13,4 @@ Latest documentation is posted on http://ta-db-networks.readthedocs.io
    user_guide
    dbn_out
    release_notes
+   auditCodes
