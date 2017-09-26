@@ -23,7 +23,11 @@ Splunk 6.6.1    2.0.0         3.0.0
 Install From Github
 -------------------
 
-This TA will soon be avalible on SplunkBase, check back for more. Currently you can clone this github repo into your `$SPLUNK_HOME` folder and then restarting Splunk Enterprise.
+This TA is avalible on SplunkBase. Or you can clone this github repo into your `$SPLUNK_HOME` folder and then restarting Splunk Enterprise.
+
+**Splunkbase:**::
+
+  https://splunkbase.splunk.com/app/3587/
 
 **Clone:**::
 

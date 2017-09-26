@@ -1,98 +1,71 @@
-DBN 6300 Syslog Messages
-========================
+Syslog Messages
+===============
 
-DBN 6300 Message Overview
--------------------------
+Message Overview
+----------------
 
 Syslog messages forwarded from the DBN-6300 are formatted to meet the CEF header specification.
-As of 2.2.14, dbn output will begin phasing out CEF label support in favor of custom fields directly in the syslog message.
 
 Syslog Message Format:
 
-+------------------+--------------------------------------+
-| CEF Header Field | DBN-6300 Data                        |
-+==================+======================================+
-| Version          | 0                                    |
-+------------------+--------------------------------------+
-| Device Vendor    | DB Networks                          |
-+------------------+--------------------------------------+
-| Device Product   | ADF                                  |
-+------------------+--------------------------------------+
-| Device Version   | Current system version               |
-+------------------+--------------------------------------+
-| Signature ID     | Numeric ID                           |
-+------------------+--------------------------------------+
-| Name             | String name associated with ID       |
-+------------------+--------------------------------------+
-| Severity         | Value from 0-10, system specified    |
-+------------------+--------------------------------------+
-| cs1Label         | system identifier                    |
-+------------------+--------------------------------------+
-| cs1              | System serial number                 |
-+------------------+--------------------------------------+
-| system_identifier| System serial number                 |
-+------------------+--------------------------------------+
-| Message          | Varies by event                      |
-+------------------+--------------------------------------+
+=================== ===================================
+ CEF Header Field              DBN-6300 Data
+=================== ===================================
+ Version             0
+ Device Vendor       DB Networks
+ Device Product      DBN
+ Device Version      Current system version
+ Signature ID        Numeric ID
+ Name                String name associated with ID
+ Severity            Value from 0-10, system specified
+ cs1Label            system identifier
+ cs1                 System serial number
+ system_identifier   System serial number
+ Message             Varies by event
+=================== ===================================
 
 Signature ID and Name Values
 ----------------------------
 
-+--------------+-----------------------------+----------------------------------------------+
-| Signature ID | Name                        | Description                                  |
-+==============+=============================+==============================================+
-| 0            | distinct_event              | New system events                            |
-+--------------+-----------------------------+----------------------------------------------+
-| 1            | repeat_event                | A count of repeaded events                   |
-+--------------+-----------------------------+----------------------------------------------+
-| 2            | heart_beat                  | Used in 1.0-1.3 to report system health      |
-+--------------+-----------------------------+----------------------------------------------+
-| 3            | engine_start                | A system has powered up or restarted         |
-+--------------+-----------------------------+----------------------------------------------+
-| 4            | archive                     | Indicates status of overnight system archive tool |
-+--------------+-----------------------------+----------------------------------------------+
-| 5            | dbfw_gc                     | Indicates a system restart due to overload of data  |
-+--------------+-----------------------------+----------------------------------------------+
-| 6            | mds_new_user                | A new user identified                        |
-+--------------+-----------------------------+----------------------------------------------+
-| 7            | mds_new_service             | A new service identified                     |
-+--------------+-----------------------------+----------------------------------------------+
-| 8            | mds_new_host                | A new host identified                        |
-+--------------+-----------------------------+----------------------------------------------+
-| 9            | mds_new_listener            | A new listener identified                    |
-+--------------+-----------------------------+----------------------------------------------+
-| 10           | tally_new_ipseity           | Detailed info on new connections             |
-+--------------+-----------------------------+----------------------------------------------+
-| 11           | cnt                         | System health counters                       |
-+--------------+-----------------------------+----------------------------------------------+
-| 12           | sys                         | System health counters                       |
-+--------------+-----------------------------+----------------------------------------------+
-| 13           | slowsys                     | System health counters                       |
-+--------------+-----------------------------+----------------------------------------------+
-| 14           | dbfwsys                     | System health counters                       |
-+--------------+-----------------------------+----------------------------------------------+
-| 15           | internal                    | Trashed messages from debug                  |
-+--------------+-----------------------------+----------------------------------------------+
-| 16           | cnta                        | Full counter dump                            |
-+--------------+-----------------------------+----------------------------------------------+
-| 17           | dbhealth                    | Database health status in csv                |
-+--------------+-----------------------------+----------------------------------------------+
-| 18           | it_threat_event             | Events related to IT Module                  |
-+--------------+-----------------------------+----------------------------------------------+
-| 19           | upgrade                     | System upgrade messages                      |
-+--------------+-----------------------------+----------------------------------------------+
-| 20           | audit                       | System audit messages                        |
-+--------------+-----------------------------+----------------------------------------------+
-| 21           | dbdu                        | Postgres table disk usage                    |
-+--------------+-----------------------------+----------------------------------------------+
+============== =================== ===============================================
+ Signature ID         Name                           Descripion
+============== =================== ===============================================
+            0   distinct_event      New system events
+            1   repeat_event        A count of repeated events
+            2   heart_beat          Used in 1.0-1.3 to report system health
+            3   engine_start        A system has powered up or restarted
+            4   archive             Indicates status of overnight system archive
+            5   dbfw_gc             Indicates a system restart due to overload of
+            6   mds_new_user        A new user identified
+            7   mds_new_service     A new service identified
+            8   mds_new_host        A new host identified
+            9   mds_new_listener    A new listener identified
+           10   tally_new_ipseity   Detailed info on new connections
+           11   cnt                 System health counters
+           12   sys                 System health counters
+           13   slowsys             System health counters
+           14   dbfwsys             System health counters
+           15   internal            Trashed messages from debug
+           16   cnta                Full counter dump
+           17   dbhealth            Database health status in csv
+           18   it_clustered_flow   IT Module - Added data flow
+           19   upgrade             System upgrade messages
+           20   audit               System audit messages
+           21   dbdu                Postgres table disk usage
+           22   it_new_cluster      IT Module - New cluster found
+           23   it_obsolete_cluster IT Module - Cluster removed or regrouped
+           24   it_cluster_activity IT Module - Data seen within known cluster
+           25   it_auto_learned     IT Module - Learned By Autopilot
+           26   it_policy_activity  IT Module - Data seen matching policy rules
+============== =================== ===============================================
 
 .. note:: The default size of the rsyslog is 8K.
    Logs that exceed this size are truncated automaticaly.
    If you expect syslog messages greater than 8K,
    increase the default message size to avoid truncation.
 
-DBN 6300 Syslog Message Detail
-------------------------------
+Syslog Message Detail
+---------------------
 
 Engine Restart Message
 **********************
@@ -104,7 +77,7 @@ contact customer service to investigate the cause.
 
 A typical message resembles the following::
 
-  <133>2017-03-14T18:57:33.449245-05:00 dbfw adf: CEF:0|DB Networks|ADF|2.2.13|3|engine_start|
+  <133>2017-03-14T18:57:33.449245-05:00 dbfw dbn: CEF:0|DB Networks|DBN|2.2.13|3|engine_start|
   5|cs1Label=system identifier cs1=00:00:00:00:00:00
 
 The message is identified by Signature ID= ``3`` and name= ``engine_start``.
@@ -126,53 +99,38 @@ A typical ``distinct_event`` resembles the following. A ``repeat_event`` has the
 
 ::
 
-  <133>2017-03-14T19:27:32.883848-05:00 dbfw adf: CEF:0|DB Networks|ADF|2.2.13|0|distinct_event|
+  <133>2017-03-14T19:27:32.883848-05:00 dbfw dbn: CEF:0|DB Networks|DBN|2.2.13|0|distinct_event|
   5|cs1Label=system identifier cs1=00:00:00:00:00:00 externalId=2737 cnt=1 rt=1489537652883
   start=1336602182934 destinationServiceName=master cn1Label=statement identifier cn1=2736
   cat=structural dst=10.10.10.77 dpt=1305 src=10.10.10.186 spt=3585 cs2Label=score cs2=0.500
   cs3Label=confidence cs3=likely act=exec_dispatch target_sql_id=1099
 
-The first part of the message contains the elements of the standard CEF format. The table below describes the event-specific fields.
+The first part of the message contains the elements of the standard CEF format. The remainder is described below.
 
-+------------------------+-------------------------------------------------------------------------------------+
-| Field                  | Description                                                                         |
-+========================+=====================================================================================+
-| externalId             | Unique event id used to look up the event in the DBN Logs                           |
-+------------------------+-------------------------------------------------------------------------------------+
-| cnt                    | Number of occurances of events with given statement identifer                       |
-+------------------------+-------------------------------------------------------------------------------------+
-| rt                     | Transmit time of the event                                                          |
-+------------------------+-------------------------------------------------------------------------------------+
-| start                  | epoch time of event (milliseconds)                                                  |
-+------------------------+-------------------------------------------------------------------------------------+
-| destinationServiceName | Name of the database associated with the attack                                     |
-+------------------------+-------------------------------------------------------------------------------------+
-| cn1Label               | Statement Identifier                                                                |
-+------------------------+-------------------------------------------------------------------------------------+
-| cn1                    | Unique statement id                                                                 |
-+------------------------+-------------------------------------------------------------------------------------+
-| cat                    | type of event (structural or parametric)                                            |
-+------------------------+-------------------------------------------------------------------------------------+
-| dst                    | Destination IP                                                                      |
-+------------------------+-------------------------------------------------------------------------------------+
-| dpt                    | Destination Port                                                                    |
-+------------------------+-------------------------------------------------------------------------------------+
-| src                    | Source IP                                                                           |
-+------------------------+-------------------------------------------------------------------------------------+
-| spt                    | Source Port                                                                         |
-+------------------------+-------------------------------------------------------------------------------------+
-| cs2Label               | Score                                                                               |
-+------------------------+-------------------------------------------------------------------------------------+
-| cs2                    | Numerical confidence score (normalized between 0-1)                                 |
-+------------------------+-------------------------------------------------------------------------------------+
-| cs3Label               | Confidence                                                                          |
-+------------------------+-------------------------------------------------------------------------------------+
-| cs3                    | String confidence description (certain, overwhelming, likely, suspicious, possible) |
-+------------------------+-------------------------------------------------------------------------------------+
-| act                    | Type of action involved (Maps to protocol RPC)                                      |
-+------------------------+-------------------------------------------------------------------------------------+
-| target_sql_id          | Integer value represented on the system by the target SQL ID                        |
-+------------------------+-------------------------------------------------------------------------------------+
+Field Details:
+
+========================= =====================================================================================
+          Field                                                Description
+========================= =====================================================================================
+  externalId               Unique event id used to look up the event in the DBN Logs
+  cnt                      Number of occurances of events with given statement identifer
+  rt                       Transmit time of the event
+  start                    epoch time of event (milliseconds)
+  destinationServiceName   Name of the database associated with the attack
+  cn1Label                 Statement Identifier
+  cn1                      Unique statement id
+  cat                      type of event (structural or parametric)
+  dst                      Destination IP
+  dpt                      Destination Port
+  src                      Source IP
+  spt                      Source Port
+  cs2Label                 Score
+  cs2                      Numerical confidence score (normalized between 01)
+  cs3Label                 Confidence
+  cs3                      String confidence description (certain, overwhelming, likely, suspicious, possible)
+  act                      Type of action involved (Maps to protocol RPC)
+  target_sql_id            Integer value represented on the system by the target SQL ID
+========================= =====================================================================================
 
 System Health Messages
 **********************
@@ -184,7 +142,7 @@ information useful to DB Networks' Customer Support personnel.
 
 Example ``cnt`` message::
 
-  <133>2017-03-14T19:27:30.140860-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|11|cnt|0|
+  <133>2017-03-14T19:27:30.140860-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|11|cnt|0|
   cs1Label=system identifier cs1=unknown rt=1489537650140 xtime_T01=03/14/17 18:57:32
   xtime_T02=03/14/17 19:27:30 xtime_T03=1 xtime_T04=0:29:58 xtime_T05=05/09/12 17:22:36
   xcap_X13=0 xcap_X01=1928135 xcap_X02=0 xcap_X33=0 xcap_X14=0.00% xcap_X03=0 xcap_X12=0
@@ -219,7 +177,7 @@ useful to DB Networks customer support and development personnel if an issue ari
 
 ``sys``::
 
-  <133>2017-03-14T19:27:32.144918-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|12|sys|0|
+  <133>2017-03-14T19:27:32.144918-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|12|sys|0|
   cs1Label=system identifier cs1=unknown rt=1489537652144 os_uptime=19946 os_loadavg_0=1
   os_loadavg_1=1 os_loadavg_2=0 os_freemem=940785664 os_totalmem=8339775488 sys_user=346203
   sys_nice=153 sys_system=69859 sys_idle=7503488 sys_iowait=33658 sys_irq=7909 sys_softirq=7575
@@ -243,14 +201,14 @@ useful to DB Networks customer support and development personnel if an issue ari
 
 ``slowsys``::
 
-  <133>2017-03-14T19:27:38.146333-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|13|slowsys|0|
+  <133>2017-03-14T19:27:38.146333-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|13|slowsys|0|
   cs1Label=system identifier cs1=unknown rt=1489537658145 disk_root_total=57521228
   disk_root_avail=41946336 disk_boot_total=194235 disk_boot_avail=82772 disk_maint_total=2818080
   disk_maint_avail=1583852 vers=0
 
 ``dbfwsys``::
 
-  <133>2017-03-14T19:27:34.173796-05:00 dbfw adf: CEF:0|Engineering|ADF|Dev Build|14|dbfwsys|0|
+  <133>2017-03-14T19:27:34.173796-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|14|dbfwsys|0|
   cs1Label=system identifier cs1=unknown rt=1489537654172 dbfw_pid=88958 dbfw_state=0
   dbfw_userCpu=9344 dbfw_sysCpu=791 dbfw_numThread=21 dbfw_VmSize=940736512 dbfw_VmRSS=524038144
 
@@ -260,7 +218,7 @@ New Discovery Messages
 New discovery syslog messages are sent when the DBN-6300 identifies a new user,
 service, host, listener, or context linking client and server in dimensions (ipseity).
 
-The fields associated with these various messages are:
+The fields associated with these various messages are shown below with optional values in brackets:
 
 +--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------+
 | Signature ID | Name                               | Description                                                                                                            |
@@ -297,29 +255,29 @@ Example Messages:
 
 ``mds_new_user`` ::
 
-    <133>2017-03-14T19:00:22.970916-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_user|5|
+    <133>2017-03-14T19:00:22.970916-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|8|mds_new_user|5|
     cs1Label=system identifier cs1=none rt=1489536022968 realm=default user_name=XXCC default_schema=XXCC
 
 
 ``mds_new_service`` ::
 
-    <133>2017-03-14T19:27:14.737219-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|7|mds_new_service|5|
+    <133>2017-03-14T19:27:14.737219-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|7|mds_new_service|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489537634735 service_name=master
     service_name_type=service dialect=Sql Server
 
 ``mds_new_host`` ::
 
-    <133>2017-03-13T19:52:09.712603-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|8|mds_new_host|5|
+    <133>2017-03-13T19:52:09.712603-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|8|mds_new_host|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489452729711 realm=default addr=10.0.0.1
 
 ``mds_new_listener`` ::
 
-    <133>2017-03-14T19:00:22.988379-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|9|mds_new_listener|5|
+    <133>2017-03-14T19:00:22.988379-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|9|mds_new_listener|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536022980 realm=default addr=10.0.0.1 port=1305
 
 ``tally_new_ipseity`` ::
 
-    <133>2017-03-14T19:00:28.548773-05:00 dbfw adf: CEF:0|DB Networks|ADF|Dev Build|10|tally_new_ipseity|5|
+    <133>2017-03-14T19:00:28.548773-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|10|tally_new_ipseity|5|
     cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536028542 tally_board=main service_name=master
     client_realm=default client_addr=10.0.0.1 server_realm=default server_addr=10.0.0.2
     server_port=1163 client_ipseities=0 server_ipseities=1 server_service_ipseities=0
@@ -333,7 +291,7 @@ described below.
 
 ``audit`` ::
 
-  <133>2017-04-26T18:59:11Z dbfw adf: CEF:0|DB Networks|ADF|2.2.13|20|audit|0|
+  <133>2017-04-26T18:59:11Z dbfw dbn: CEF:0|DB Networks|DBN|2.2.13|20|audit|0|
   system_identifier=FW42-QA-0006 cs1Label=system identifier cs1=FW42-QA-0006 start=1493251151986 category=sysOps
   auditCode=2030 auditMessage="Apply update" userId=admin sessionId=7rIowveGTOhxKmz6tTJQYmRzlvnZ5vou target="Update:P_2.2.13"
 
@@ -357,65 +315,195 @@ rule’s action is configured to write to syslog when it fires, the details of t
 data flow and unique identifiers for several aspects of the flow and rule are conveyed
 in messages described below.
 
+The insider threat event module is made up of five types of events. Below you'll
+find a description of each event type, an example, and detailed information about
+the fields in the given event.
+
+IT Clustered Flow
++++++++++++++++++
+
+This event is emitted when the autopilot adds a data flow to the incident domain
+to be clustered with other behavioral incident data flows. Recall, each data flow
+is composed of a specific session and database object. The database object is one
+of relation, meta-relation, or user role.  Relation and meta-relations are reported
+with an id, up to three name qualifiers (server, database, and schema) if applicable,
+a relation name, and mode of access (read or write for relations, create, drop,
+alter, or truncate for meta-relations).  User role database objects are reported
+with an id, name, type (user or role), mode (create, drop, alter, grant, or revoke),
+when applicable a session database user ID and name, and when applicable, an
+optionally qualified relation.  In addition to the defining features of the data
+flow in question, ITClusteredFlow events are characterized by the score information
+used by the autopilot to determine the data flow should be clustered.
+
 Example::
 
-  <133>2017-03-14T19:21:21.109481-05:00 dbfw adf: CEF:0|DB Networks, Inc.|ADF|Dev Build|18|it_threat_event|5|
-  cs1Label=system identifier cs1=00:00:00:00:00:00 eventId=2174 tix_id=1855 tix_annotation=New general rule 1489537194368
-  spec_id=1857 spec_type=general spec_annotation=Catchall cat_id=222 category_name=sys.syslog
-  flow_id=1424 start=1336601400 end=1336601400 rt=1336601400 server= database=master schema=
-  relation=filerepository mode=read user_id=293 user_name=sa service_name=master
-  dialect=Sql Server clientIP=10.0.0.1 serverIP=10.0.0.2 listener_port=1305
+    <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_clustered_flow|7|
+    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
+    itEventId=1056 clusterId=74 flowId=1804 contextId=1800 userId=300
+    userName=BOB clientId=572 client-realm=default client-ip=10.1.41.11 serviceId=1030 dialect=Oracle
+    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener-realm=default
+    listener-ip=11.1.3.32 port=1521 context-earliest=1506003300000 accessId=317 relationId=317
+    relation=personcreditcard mode=read access-earliest=1494273900000 flow-earliest=1506003300000
+    accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
+
+Details of the field types:
+
+=================== ========= ====================================================================================================
+    Field Name        Type                                               Description
+=================== ========= ====================================================================================================
+ itEventId           int       Event ID for new clustered data flow
+ clusterId           int       Incident internal identifier for linking to DBN web interface
+ flowId              int       Data flow internal identifier for linking to DBN web interface
+ contextId           int       Session internal identifier for linking to DBN web interface
+ userId              int       Session database user name internal identifier
+ userName            string    Session databse user name, e.g. "BOB"
+ clientId            int       Session client internal identifier
+ client-floatm       string    Session client floatm, typically "default" unless using VLANs in DBN configuration
+ client-ip           string    Session client IP address, e.g. "10.1.41.2"
+ serviceId           int       Session database service internal identifier
+ dialect             string    Session dialect description, e.g. "Oracle"
+ serviceName         string    Session database service name, e.g. "CRM.EU"
+ serviceType         string    Session database service type, either "sid", "global name", or "service"
+ listenerId          int       Session database listener internal identififer
+ listener-floatm     string    Session database listener floatm, typically "default" unless using VLANs in DBN configuration
+ listener-ip         string    Session database listener IP, e.g. " 10.1.40.32"
+ port                type      Session database listener port
+ context-earliest    int       Epoch milliseconds of earliest obvserved time for the data flow's session
+ accessId            int       Database object internal identifier
+ relationId          int       Database object relation internal identifier
+ metaRelationId      int       Database object meta-relation internal identifier
+ server              string    Database object relation server qualifier
+ database            string    Database object relation database qualifier
+ schema              string    Database object relation schema qualifier
+ relation            string    Database object relation name
+ mode                string    Database object mode of use, e.g. "read" or "alter"
+ userRoleId          int       Database object user role internal identifier
+ type                string    Database object user role type, either "user" or "role"
+ access-earliest     int       Epoch milliseconds of earliest observed time for the data flows's database object
+ flow-earliest       int       Epoch milliseconds of earliest observed time for the data flow
+ accessScore         float     Internal score for how unexpected the session is in the context of the data flow's database object
+ contextScore        float     Internal score for how unexpected the database object is in the context of the data flow's session
+ combinedScore       float     Internal score combining the access and context score
+ importance          float     User specified weighting of the combined score
+ risk                float     Internal score combining combined score and importance
+=================== ========= ====================================================================================================
 
 
-As with the other messages described above, the first part of the message contains
-the elements of the standard CEF format. The event-specific fields are described in the following table.
+IT New Cluster
+++++++++++++++
 
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field           | Description                                                                                                                                                                   |
-+=================+===============================================================================================================================================================================+
-| eventId         | Unique event ID used to look up the event in the DBN event log.                                                                                                               |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| tix_id          | Rule system transaction ID. Rule configuration changes are transactional, so each rule belongs to one transaction only.                                                       |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| tix_annotation  | Rule system transaction annotation.                                                                                                                                           |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| spec_id         | Unique identifier for the rule that generated the event.                                                                                                                      |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| spec_type       | Type of rule that generated the event. This can be ‘general’, ‘stable-qname-contexts’, or ‘stable-context-qnames’ for policy, stable qualified name, or stable context rules. |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| spec_annotation | Optional user annotation of the rule.                                                                                                                                         |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| cat_id          | Unique identifier for the set of actions taken when the rule associated with this event fires.                                                                                |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| category_name   | Name for the set of actions taken when the rule associated with this event fires. Typically, this is ‘sys.syslog’.                                                            |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| flow_id         | Unique identifier for the data flow ID that triggered this event.                                                                                                             |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| first_seen_tid  | First time the triggering data flow was observed by DBN-6300.                                                                                                                 |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| last_seen_tid   | Last time the triggering data flow was observed by DBN-6300.                                                                                                                  |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| server          | Server name, if specified, in the qualified name mentioned by the sql statement that triggered this event.                                                                    |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| database        | Database name, if specified, in the qualified name mentioned by the sql statement that triggered this event.                                                                  |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| schema          | Schema name, if specified, in the qualified name mentioned by the sql statement that triggered this event.                                                                    |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| relation        | Relation name (for example, table or view) in the qualified name mentioned by the sql statement that triggered this event.                                                    |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| mode            | Mode of access (read or write) of the qualified name mentioned by the sql statement that triggered this event.                                                                |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| user_id         | Unique identifier for the database user employed to execute that statement that triggered this event.                                                                         |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| user_name       | Database user name used to execute the statement that triggered this event.                                                                                                   |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| service_name    | Service name against which the statement that triggered this event was executed.                                                                                              |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| dialect         | Dialect (for example, Sql Server) of the above service name.                                                                                                                  |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| clientIP        | Client IP address employed to execute the statement that triggered this event.                                                                                                |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| serverIP        | Server IP address against which the statement that triggered this event was executed.                                                                                         |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| listener_port   | Port of the above server IP.                                                                                                                                                  |
-+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+This event is emitted each time a new incident is created by the system.  This
+happens when new, unexpectd data flows do not sufficiently match an existing incident.
+Either a new incident is created with the new data flow, or if the systems' clustering
+algorithms find a better grouping of unexpected data flows, old incidents are regrouped
+into new incidents to incorporate the new data flow
+
+Example::
+
+    <132>2017-08-08T16:39:48.041403-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|22|it_new_cluster|7|
+    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
+    itEventId=1047 clusterId=127
+
+Details of the two field types:
+
+============ ====== ===================================================================
+ Field Name   Type                              Description
+============ ====== ===================================================================
+ itEventId    int    New incident event ID
+ clusterId    int    New incident internal identifier for linking to DBN web interface
+============ ====== ===================================================================
+
+IT Obsolete Cluster
++++++++++++++++++++
+
+When the above mentioned regrouping happens, or the user introduces either learning
+or policy constraints into the system, incident clusters of data flows can become
+obsolete.  This event is emitted under those circumstances however is disabled by
+default.
+
+Example::
+
+    <132>2017-08-08T16:39:48.041407-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|23|it_obsolete_cluster|7|
+    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
+    itEventId=1049 clusterId=128
+
+Field Details:
+
+============ ====== ========================================
+ Field Name   Type                Description
+============ ====== ========================================
+ itEventId    int    Obsolete incident event ID
+ clusterId    int    Obsolete incident internal identifier
+============ ====== ========================================
+
+IT Cluster Activity
++++++++++++++++++++
+
+This event is emitted when data flows, previously clustered into an incident exhibit activity,
+i.e. executing sql statement(s).  Each event corresponds to a single data flow.
+The data flow is reported with the same fields defined used by the ITClusteredFlow
+event except the score specific fields, accessScore, contextScore, combinedScore,
+importance, and risk.  In addition, the following fields are supplied:
+
+Example::
+
+    <132>2017-08-08T16:39:47.865081-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|24|it_cluster_activity|7|
+    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
+    itEventId=1044 clusterId=57 riskType=high flowId=1707 contextId=1672 userId=301 userName=system
+    clientId=298 client-realm=default client-ip=10.1.41.3 serviceId=1030 dialect=Oracle
+    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener-realm=default
+    listener-ip=11.1.3.32 port=1521 context-earliest=1504451400000 accessId=480 relationId=480
+    relation=customer mode=read access-earliest=1494377400000 flow-earliest=1504464600000
+    activity-earliest=1505986500000 activity-latest=1506747900000 execs=493
+
+Field Details:
+
+==================== ========= ============================================================================================
+     Field Name        Type                                            Description
+==================== ========= ============================================================================================
+ itEventId            int       New incident activity event ID
+ riskType             string    Incident risk category, either "high" or "low"
+ activity-earliest    int       Epoch milliseconds of the first observed time of activity for the data flow in this event
+ activity-latest      int       Epoch milliseconds of the latest observed time of activity for the data flow in this event
+ execs                int       Number of statement executions by the data flow in this event
+==================== ========= ============================================================================================
+
+
+IT Auto Learned
++++++++++++++++
+
+This event is emitted when a data flow is learned by the autopilot, using the same
+fields as the ITClusteredFlow event except clusterId. This event is also disabled by
+default.
+
+Example::
+
+    <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_auto_learned|7|
+    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
+    itEventId=1056 flowId=1804 contextId=1800 userId=300
+    userName=BOB clientId=572 client-realm=default client-ip=10.1.41.11 serviceId=1030 dialect=Oracle
+    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener-realm=default
+    listener-ip=11.1.3.32 port=1521 context-earliest=1506003300000 accessId=317 relationId=317
+    relation=personcreditcard mode=read access-earliest=1494273900000 flow-earliest=1506003300000
+    accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
+
+For field details see `IT Clustered Flow`_.
+
+IT Policy Activity
+++++++++++++++++++
+
+This event is emitted when data flows matching a committed policy constraint with
+a syslog category action exhibit activity, i.e. they execute sql statements.
+This event uses the same fields as the ITClusterActivity event, substituting
+constraintId, categoryId, and category for riskType:
+
+Field Details:
+
+============== ======== ===========================================================================================
+  Field Name     Type                                           Description
+============== ======== ===========================================================================================
+ itEventId      int      New policy activity event ID
+ constraintId   int      Internal identifier or policy constraint that matched the data flow for this event
+ categoryId     int      Internal identifier for the category assigned to the constraint that triggered this event
+ category       string   Category name for the category assigned to the constraint that triggered this event
+============== ======== ===========================================================================================
