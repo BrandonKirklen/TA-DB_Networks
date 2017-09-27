@@ -37,7 +37,7 @@ Security Operations (``secOps``):
  1020   Update redaction configuration                               Redaction
  1021   Clear audit log                                              AuditLog
  1022   Update audit configuration                                   AuditLog
- 1023   Audit Error                                                  AuditError
+ 1023   Audit Error                                                  N/A
  1024   Create session                                               Session
  1025   Delete session                                               Session
  1026   Enable SSH remote access                                     SSH
@@ -88,10 +88,10 @@ System Operations (``sysOps``):
  2022   Download backup                            Backup
  2023   Set password for backup                    Backup
  2024   Unlock backup                              Backup
- 2025   Initialize system for restoring a backup   Backup
+ 2025   Initialize system for restoring a backup   N/A
  2026   Restore backup                             Backup
  2027   Create backup                              Backup
- 2028   Upload update                              Update
+ 2028   Upload update                              N/A
  2029   Delete update                              Update
  2030   Apply update                               Update
  2031   Kill watchdog                              Watchdog
@@ -99,9 +99,9 @@ System Operations (``sysOps``):
  2033   Disable watchdog                           Watchdog
  2034   Update registry                            Registry
  2035   Update CMS configuration                   CMS
- 2036   Create a unit within CMS                   Unit
+ 2036   Create a unit within CMS                   N/A
  2037   Update a unit within CMS                   Unit
- 2038   Delete a unit within CMS                   Unit
+ 2038   Delete a unit within CMS                   N/A
  2039   User accepted the EULA                     EULA
  2040   EULA covered under seperate agreement      EULA
  2041   Clear user data                            System
