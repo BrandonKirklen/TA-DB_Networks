@@ -21,6 +21,7 @@ Syslog Message Format:
  cs1Label            system identifier
  cs1                 System serial number
  system_identifier   System serial number
+ rt                  Message creation time in ms from epoch
  Message             Varies by event
 =================== ===================================
 
