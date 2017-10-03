@@ -17,7 +17,7 @@ Syslog Message Format:
  Device Version      Current system version
  Signature ID        Numeric ID
  Name                String name associated with ID
- Severity            Value from 0-10, system specified
+ Severity            Value from 0-7, system specified
  cs1Label            system identifier
  cs1                 System serial number
  system_identifier   System serial number
