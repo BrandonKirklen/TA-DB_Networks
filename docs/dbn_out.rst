@@ -359,14 +359,14 @@ Details of the field types:
  userId              int       Session database user name internal identifier
  userName            string    Session databse user name, e.g. "BOB"
  clientId            int       Session client internal identifier
- client-floatm       string    Session client floatm, typically "default" unless using VLANs in DBN configuration
+ client-realm        string    Session client realm, typically "default" unless using VLANs in DBN configuration
  client-ip           string    Session client IP address, e.g. "10.1.41.2"
  serviceId           int       Session database service internal identifier
  dialect             string    Session dialect description, e.g. "Oracle"
  serviceName         string    Session database service name, e.g. "CRM.EU"
  serviceType         string    Session database service type, either "sid", "global name", or "service"
  listenerId          int       Session database listener internal identififer
- listener-floatm     string    Session database listener floatm, typically "default" unless using VLANs in DBN configuration
+ listener-realm      string    Session database listener realm, typically "default" unless using VLANs in DBN configuration
  listener-ip         string    Session database listener IP, e.g. " 10.1.40.32"
  port                type      Session database listener port
  context-earliest    int       Epoch milliseconds of earliest obvserved time for the data flow's session
