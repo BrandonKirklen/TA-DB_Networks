@@ -349,45 +349,45 @@ Example::
 
 Details of the field types:
 
-=================== ========= ====================================================================================================
-    Field Name        Type                                               Description
-=================== ========= ====================================================================================================
- itEventId           int       Event ID for new clustered data flow
- clusterId           int       Incident internal identifier for linking to DBN web interface
- flowId              int       Data flow internal identifier for linking to DBN web interface
- contextId           int       Session internal identifier for linking to DBN web interface
- userId              int       Session database user name internal identifier
- userName            string    Session databse user name, e.g. "BOB"
- clientId            int       Session client internal identifier
- client-realm        string    Session client realm, typically "default" unless using VLANs in DBN configuration
- client-ip           string    Session client IP address, e.g. "10.1.41.2"
- serviceId           int       Session database service internal identifier
- dialect             string    Session dialect description, e.g. "Oracle"
- serviceName         string    Session database service name, e.g. "CRM.EU"
- serviceType         string    Session database service type, either "sid", "global name", or "service"
- listenerId          int       Session database listener internal identififer
- listener-realm      string    Session database listener realm, typically "default" unless using VLANs in DBN configuration
- listener-ip         string    Session database listener IP, e.g. " 10.1.40.32"
- port                type      Session database listener port
- context-earliest    int       Epoch milliseconds of earliest obvserved time for the data flow's session
- accessId            int       Database object internal identifier
- relationId          int       Database object relation internal identifier
- metaRelationId      int       Database object meta-relation internal identifier
- server              string    Database object relation server qualifier
- database            string    Database object relation database qualifier
- schema              string    Database object relation schema qualifier
- relation            string    Database object relation name
- mode                string    Database object mode of use, e.g. "read" or "alter"
- userRoleId          int       Database object user role internal identifier
- type                string    Database object user role type, either "user" or "role"
- access-earliest     int       Epoch milliseconds of earliest observed time for the data flows's database object
- flow-earliest       int       Epoch milliseconds of earliest observed time for the data flow
- accessScore         float     Internal score for how unexpected the session is in the context of the data flow's database object
- contextScore        float     Internal score for how unexpected the database object is in the context of the data flow's session
- combinedScore       float     Internal score combining the access and context score
- importance          float     User specified weighting of the combined score
- risk                float     Internal score combining combined score and importance
-=================== ========= ====================================================================================================
+=====================   ===========   ====================================================================================================
+    Field Name            Type                                                   Description
+=====================   ===========   ====================================================================================================
+ it_event_id             int           Event ID for new clustered data flow
+ cluster_id              int           Incident internal identifier for linking to DBN web interface
+ flowId                  int           Data flow internal identifier for linking to DBN web interface
+ context_id              int           Session internal identifier for linking to DBN web interface
+ user_id                 int           Session database user name internal identifier
+ user_name               string        Session databse user name, e.g. "BOB"
+ client_id               int           Session client internal identifier
+ client_realm            string        Session client realm, typically "default" unless using VLANs in DBN configuration
+ client_ip               string        Session client IP address, e.g. "10.1.41.2"
+ service_id              int           Session database service internal identifier
+ dialect                 string        Session dialect description, e.g. "Oracle"
+ service_name            string        Session database service name, e.g. "CRM.EU"
+ service_type            string        Session database service type, either "sid", "global name", or "service"
+ listener_id             int           Session database listener internal identififer
+ listener_realm          string        Session database listener realm, typically "default" unless using VLANs in DBN configuration
+ listener_ip             string        Session database listener IP, e.g. " 10.1.40.32"
+ port                    type          Session database listener port
+ context_earliest        int           Epoch milliseconds of earliest obvserved time for the data flow's session
+ access_id               int           Database object internal identifier
+ relation_id             int           Database object relation internal identifier
+ meta_relation_id        int           Database object meta-relation internal identifier
+ server                  string        Database object relation server qualifier
+ database                string        Database object relation database qualifier
+ schema                  string        Database object relation schema qualifier
+ relation                string        Database object relation name
+ mode                    string        Database object mode of use, e.g. "read" or "alter"
+ user_role_id            int           Database object user role internal identifier
+ type                    string        Database object user role type, either "user" or "role"
+ access_earliest         int           Epoch milliseconds of earliest observed time for the data flows's database object
+ flow_earliest           int           Epoch milliseconds of earliest observed time for the data flow
+ access_score            float         Internal score for how unexpected the session is in the context of the data flow's database object
+ context_score           float         Internal score for how unexpected the database object is in the context of the data flow's session
+ combined_score          float         Internal score combining the access and context score
+ importance              float         User specified weighting of the combined score
+ risk                    float         Internal score combining combined score and importance
+=====================   ===========   ====================================================================================================
 
 
 IT New Cluster
@@ -407,12 +407,12 @@ Example::
 
 Details of the two field types:
 
-============ ====== ===================================================================
- Field Name   Type                              Description
-============ ====== ===================================================================
- itEventId    int    New incident event ID
- clusterId    int    New incident internal identifier for linking to DBN web interface
-============ ====== ===================================================================
+============= ====== ===================================================================
+ Field Name    Type                              Description
+============= ====== ===================================================================
+ it_event_id   int    New incident event ID
+ cluster_id    int    New incident internal identifier for linking to DBN web interface
+============= ====== ===================================================================
 
 IT Obsolete Cluster
 +++++++++++++++++++
@@ -430,12 +430,12 @@ Example::
 
 Field Details:
 
-============ ====== ========================================
- Field Name   Type                Description
-============ ====== ========================================
- itEventId    int    Obsolete incident event ID
- clusterId    int    Obsolete incident internal identifier
-============ ====== ========================================
+============= ====== ========================================
+ Field Name    Type                Description
+============= ====== ========================================
+ it_event_id   int    Obsolete incident event ID
+ cluster_id    int    Obsolete incident internal identifier
+============= ====== ========================================
 
 IT Cluster Activity
 +++++++++++++++++++
@@ -462,10 +462,10 @@ Field Details:
 ==================== ========= ============================================================================================
      Field Name        Type                                            Description
 ==================== ========= ============================================================================================
- itEventId            int       New incident activity event ID
- riskType             string    Incident risk category, either "high" or "low"
- activity-earliest    int       Epoch milliseconds of the first observed time of activity for the data flow in this event
- activity-latest      int       Epoch milliseconds of the latest observed time of activity for the data flow in this event
+ it_event_id          int       New incident activity event ID
+ risk_type            string    Incident risk category, either "high" or "low"
+ activity_earliest    int       Epoch milliseconds of the first observed time of activity for the data flow in this event
+ activity_latest      int       Epoch milliseconds of the latest observed time of activity for the data flow in this event
  execs                int       Number of statement executions by the data flow in this event
 ==================== ========= ============================================================================================
 
@@ -500,11 +500,111 @@ constraintId, categoryId, and category for riskType:
 
 Field Details:
 
-============== ======== ===========================================================================================
-  Field Name     Type                                           Description
-============== ======== ===========================================================================================
- itEventId      int      New policy activity event ID
- constraintId   int      Internal identifier or policy constraint that matched the data flow for this event
- categoryId     int      Internal identifier for the category assigned to the constraint that triggered this event
- category       string   Category name for the category assigned to the constraint that triggered this event
-============== ======== ===========================================================================================
+=============== ======== ===========================================================================================
+  Field Name      Type                                           Description
+=============== ======== ===========================================================================================
+ it_event_id     int      New policy activity event ID
+ constraint_id   int      Internal identifier or policy constraint that matched the data flow for this event
+ category_id     int      Internal identifier for the category assigned to the constraint that triggered this event
+ category        string   Category name for the category assigned to the constraint that triggered this event
+=============== ======== ===========================================================================================
+
+IT New Context
+++++++++++++++
+
+This event is emitted once for each new context, also referred to as session,
+the first time it is observed.  A new session event has the following fields:
+
+===================== ========= ===============================================================================================
+     Field Name         Type                                              Description
+===================== ========= ===============================================================================================
+ context_id            int       Session internal identifier for linking to DBN web interface.
+ user_id               int       Session database user name internal identifier.
+ user_name             string    Session databse user name, e.g. "BOB"
+ client_id             int       Session client internal identifier.
+ client_realm          string    Session client realm, typically "default" unless using VLANs in DBN configuration.
+ client_ip             string    Session client IP address, e.g. "10.1.41.2"
+ service_id            int       Session database service internal identifier.
+ dialect               string    Session dialect description, e.g. "Oracle"
+ service_name          string    Session database service name, e.g. "CRM.EU"
+ service_type          string    Session database service type, either "sid", "global name", or "service"
+ listener_id           int       Session database listener internal identififer.
+ listener_realm        string    Session database listener realm, typically "default" unless using VLANs in DBN configuration.
+ listener_ip           string    Session database listener IP, e.g. " 10.1.40.32"
+ port                  type      Session database listener port.
+ context_earliest      bigint    Epoch milliseconds of earliest obvserved time for the data flow's session.
+===================== ========= ===============================================================================================
+
+
+IT New Access
++++++++++++++
+
+This event is emitted once for each new access, also referred to as database object,
+the first time it is observed. A database object is one of relation, meta-relation,
+or user role.  Relation and meta-relations are reported with an id, up to three
+name qualifiers (server, database, and schema) if applicable, a relation name,
+and mode of access (read or write for relations, create, drop, alter, or truncate
+for meta-relations).  User role database objects are reported with an id, name,
+type (user or role), mode (create, drop, alter, grant, or revoke), when applicable
+a session database user ID and name, and when applicable, an optionally qualified
+relation. A new object event has the following fields:
+
+=================== ========= ====================================================================================
+    Field Name        Type                                        Description
+=================== ========= ====================================================================================
+ access_id           int       Database object internal identifier.
+ relation_id         int       Database object relation internal identifier.
+ meta_relation_id    int       Database object meta-relation internal identifier.
+ server              string    Database object relation server qualifier.
+ database            string    Database object relation database qualifier.
+ schema              string    Database object relation schema qualifier.
+ relation            string    Database object relation name.
+ mode                string    Database object mode of use, e.g. "read" or "alter".
+ user_role_id        int       Database object user role internal identifier.
+ user_role_name      string    Databse object user role name.
+ type                string    Database object user role type, either "user" or "role".
+ access_earliest     bigint    Epoch milliseconds of earliest observed time for the data flows's database object.
+=================== ========= ====================================================================================
+
+
+IT New Flow
++++++++++++
+
+This event is emitted once for each new data flow, the first time it is observed.
+A data flow is the unique combination of a context (also referred to as session)
+and access (also referred to as object).  The fields for a new flow event are
+those used for a new context, those used for a new access, and also:
+
+=================== ========= ====================================================================================
+    Field Name        Type                                        Description
+=================== ========= ====================================================================================
+ flow_earliest       bigint    Epoch milliseconds of earliest observed time for the data flow.
+=================== ========= ====================================================================================
+
+
+CMDB Key-Value Pairs Format
+***************************
+
+The tally_new_ipseity (10), ITClusteredFlow (18), ITClusterActivity (24), ITAutoLearned (25),
+and ITPolicyActivity (26) events can be extended with CMDB data.  The current implementation
+will add CEF pairs for each user extension of user, service, client, and relation (e.g. table)
+that has the syslog flag (1) set and applies to the event in question.  For example, tally_new_ipseity
+events do not have relation attributes to extend, but the IT events do.
+
+Each custom message key is prefixed by an identifier for the scope of attribute being annotated,
+followed by the name of the annotation.  For example, if there exists CMDB data annotating each
+service with a "riskScore" and a "division", then the tally_new_ipseity custom pairs will look like
+"mds.services-riskScore=34" and "mds.services-division=HR".
+
+The tally_new_ipseity events have the following prefixes:
+
+    * User annotations will be prefixed by "mds.users-"
+    * Service annotations will be prefixed by "mds.services-"
+    * Client host annotations will be prefixec by "mds.hosts-"
+
+The IT events have the following prefixes:
+
+    * User annotations will be prefixed by "user-ext-mds.users-"
+    * Service annotations will be prefixed by "service-ext-mds.services-"
+    * Client host annotations will be prefixed by "client-ext-mds.hosts-"
+    * Relation annotations will be prefixed by "relation-ext-parser.relation-"
