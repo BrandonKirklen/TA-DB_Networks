@@ -530,7 +530,7 @@ the first time it is observed.  A new session event has the following fields:
  service_type          string    Session database service type, either "sid", "global name", or "service"
  listener_id           int       Session database listener internal identififer.
  listener_realm        string    Session database listener realm, typically "default" unless using VLANs in DBN configuration.
- listener_ip           string    Session database listener IP, e.g. " 10.1.40.32"
+ listener_ip           string    Session database listener IP, e.g. "10.1.40.32"
  port                  type      Session database listener port.
  context_earliest      bigint    Epoch milliseconds of earliest obvserved time for the data flow's session.
 ===================== ========= ===============================================================================================
