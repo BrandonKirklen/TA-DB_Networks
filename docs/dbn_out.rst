@@ -585,26 +585,26 @@ those used for a new context, those used for a new access, and also:
 CMDB Key-Value Pairs Format
 ***************************
 
-The tally_new_ipseity (10), ITClusteredFlow (18), ITClusterActivity (24), ITAutoLearned (25),
-and ITPolicyActivity (26) events can be extended with CMDB data.  The current implementation
+The ``tally_new_ipseity`` (10), ``ITClusteredFlow`` (18), ``ITClusterActivity`` (24), ``ITAutoLearned`` (25),
+and ``ITPolicyActivity`` (26) events can be extended with CMDB data.  The current implementation
 will add CEF pairs for each user extension of user, service, client, and relation (e.g. table)
-that has the syslog flag (1) set and applies to the event in question.  For example, tally_new_ipseity
+that has the syslog flag (1) set and applies to the event in question.  For example, ``tally_new_ipseity``
 events do not have relation attributes to extend, but the IT events do.
 
 Each custom message key is prefixed by an identifier for the scope of attribute being annotated,
 followed by the name of the annotation.  For example, if there exists CMDB data annotating each
-service with a "risk_score" and a "division", then the tally_new_ipseity custom pairs will look like
-"mds.services_riskScore=34" and "mds.services_division=HR".
+service with a ``risk_score`` and a ``division``, then the tally_new_ipseity custom pairs will look like
+``mds.services_riskScore=34`` and ``mds.services_division=HR``.
 
 The tally_new_ipseity events have the following prefixes:
 
-    * User annotations will be prefixed by "mds.users_"
-    * Service annotations will be prefixed by "mds.services_"
-    * Client host annotations will be prefixec by "mds.hosts_"
+    * User annotations will be prefixed by ``mds.users_``
+    * Service annotations will be prefixed by ``mds.services_``
+    * Client host annotations will be prefixec by ``mds.hosts_``
 
 The IT events have the following prefixes:
 
-    * User annotations will be prefixed by "user_ext_mds.users_"
-    * Service annotations will be prefixed by "service_ext_mds.services_"
-    * Client host annotations will be prefixed by "client_ext_mds.hosts_"
-    * Relation annotations will be prefixed by "relation_ext_parser.relation_"
+    * User annotations will be prefixed by ``user_ext_mds.users_``
+    * Service annotations will be prefixed by ``service_ext_mds.services_``
+    * Client host annotations will be prefixed by ``client_ext_mds.hosts_``
+    * Relation annotations will be prefixed by ``relation_ext_parser.relation_``
