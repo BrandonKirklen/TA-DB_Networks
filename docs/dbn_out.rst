@@ -344,10 +344,10 @@ Example::
     <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_clustered_flow|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
     itEventId=1056 clusterId=74 flowId=1804 contextId=1800 userId=300
-    userName=BOB clientId=572 client-realm=default client-ip=10.1.41.11 serviceId=1030 dialect=Oracle
-    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener-realm=default
-    listener-ip=11.1.3.32 port=1521 context-earliest=1506003300000 accessId=317 relationId=317
-    relation=personcreditcard mode=read access-earliest=1494273900000 flow-earliest=1506003300000
+    userName=BOB clientId=572 client_realm=default client_ip=10.1.41.11 serviceId=1030 dialect=Oracle
+    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener_realm=default
+    listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 accessId=317 relationId=317
+    relation=personcreditcard mode=read access_earliest=1494273900000 flow_earliest=1506003300000
     accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
 
 Details of the field types:
@@ -454,11 +454,11 @@ Example::
     <132>2017-08-08T16:39:47.865081-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|24|it_cluster_activity|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
     itEventId=1044 clusterId=57 riskType=high flowId=1707 contextId=1672 userId=301 userName=system
-    clientId=298 client-realm=default client-ip=10.1.41.3 serviceId=1030 dialect=Oracle
-    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener-realm=default
-    listener-ip=11.1.3.32 port=1521 context-earliest=1504451400000 accessId=480 relationId=480
-    relation=customer mode=read access-earliest=1494377400000 flow-earliest=1504464600000
-    activity-earliest=1505986500000 activity-latest=1506747900000 execs=493
+    clientId=298 client_realm=default client_ip=10.1.41.3 serviceId=1030 dialect=Oracle
+    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener_realm=default
+    listener_ip=11.1.3.32 port=1521 context_earliest=1504451400000 accessId=480 relationId=480
+    relation=customer mode=read access_earliest=1494377400000 flow_earliest=1504464600000
+    activity_earliest=1505986500000 activity_latest=1506747900000 execs=493
 
 Field Details:
 
@@ -485,10 +485,10 @@ Example::
     <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_auto_learned|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
     itEventId=1056 flowId=1804 contextId=1800 userId=300
-    userName=BOB clientId=572 client-realm=default client-ip=10.1.41.11 serviceId=1030 dialect=Oracle
-    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener-realm=default
-    listener-ip=11.1.3.32 port=1521 context-earliest=1506003300000 accessId=317 relationId=317
-    relation=personcreditcard mode=read access-earliest=1494273900000 flow-earliest=1506003300000
+    userName=BOB clientId=572 client_realm=default client_ip=10.1.41.11 serviceId=1030 dialect=Oracle
+    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener_realm=default
+    listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 accessId=317 relationId=317
+    relation=personcreditcard mode=read access_earliest=1494273900000 flow_earliest=1506003300000
     accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
 
 For field details see `IT Clustered Flow`_.
