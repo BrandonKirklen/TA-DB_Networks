@@ -593,7 +593,7 @@ events do not have relation attributes to extend, but the IT events do.
 
 Each custom message key is prefixed by an identifier for the scope of attribute being annotated,
 followed by the name of the annotation.  For example, if there exists CMDB data annotating each
-service with a ``risk_score`` and a ``division``, then the tally_new_ipseity custom pairs will look like
+service with a ``risk_score`` and a ``division``, then the ``tally_new_ipseity`` custom pairs will look like
 ``mds.services_riskScore=34`` and ``mds.services_division=HR``.
 
 The tally_new_ipseity events have the following prefixes:
