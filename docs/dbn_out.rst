@@ -56,8 +56,11 @@ Signature ID and Name Values
            22   it_new_cluster      IT Module - New cluster found
            23   it_obsolete_cluster IT Module - Cluster removed or regrouped
            24   it_cluster_activity IT Module - Data seen within known cluster
-           25   it_auto_learned     IT Module - Learned By Autopilot
+           25   it_auto_learned     IT Module - Learned by autopilot
            26   it_policy_activity  IT Module - Data seen matching policy rules
+           27   it_new_context      IT Module - New observed context
+           28   it_new_access       IT Module - New access found
+           29   it_new_flow         IT Module - New flow found
 ============== =================== ===============================================
 
 .. note:: The default size of the rsyslog is 8K.
