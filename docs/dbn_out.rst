@@ -310,7 +310,7 @@ the criteria of an insider threat rule that has been configured to monitor and s
 The purpose of these messages is alert customers to policy and stability violations in a monitored network.
 Insider threat rules are defined in terms of sets or patterns describing data flows.
 A data flow is the unique combination of a partially or fully qualified table name
-(for example, “master.sys.databases” specifies database, schema, and relation, but not server)
+(for example, ``master.sys.databases`` specifies database, schema, and relation, but not server)
 mentioned in a specific network context (i.e., client IP, server IP, server Port, database service,
 and database user). When a statement is executed, the DBN-6300 analyzes the SQL text semantically,
 looks up the corresponding data flow (or flows if there are more than one qualified name in the statement),
@@ -336,17 +336,17 @@ alter, or truncate for meta-relations).  User role database objects are reported
 with an id, name, type (user or role), mode (create, drop, alter, grant, or revoke),
 when applicable a session database user ID and name, and when applicable, an
 optionally qualified relation.  In addition to the defining features of the data
-flow in question, ITClusteredFlow events are characterized by the score information
+flow in question, IT Clustered Flow events are characterized by the score information
 used by the autopilot to determine the data flow should be clustered.
 
 Example::
 
     <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_clustered_flow|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1056 clusterId=74 flowId=1804 contextId=1800 userId=300
-    userName=BOB clientId=572 client_realm=default client_ip=10.1.41.11 serviceId=1030 dialect=Oracle
-    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener_realm=default
-    listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 accessId=317 relationId=317
+    it_event_id=1056 cluster_id=74 flow_id=1804 context_id=1800 user_id=300
+    user_name=BOB client_id=572 client_realm=default client_ip=10.1.41.11 service_id=1030 dialect=Oracle
+    service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
+    listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 access_id=317 relation_id=317
     relation=personcreditcard mode=read access_earliest=1494273900000 flow_earliest=1506003300000
     accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
 
@@ -357,7 +357,7 @@ Details of the field types:
 =====================   ===========   ====================================================================================================
  it_event_id             int           Event ID for new clustered data flow
  cluster_id              int           Incident internal identifier for linking to DBN web interface
- flowId                  int           Data flow internal identifier for linking to DBN web interface
+ flow_id                  int           Data flow internal identifier for linking to DBN web interface
  context_id              int           Session internal identifier for linking to DBN web interface
  user_id                 int           Session database user name internal identifier
  user_name               string        Session databse user name, e.g. "BOB"
@@ -406,7 +406,7 @@ Example::
 
     <132>2017-08-08T16:39:48.041403-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|22|it_new_cluster|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1047 clusterId=127
+    itEventId=1047 cluster_id=127
 
 Details of the two field types:
 
@@ -429,7 +429,7 @@ Example::
 
     <132>2017-08-08T16:39:48.041407-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|23|it_obsolete_cluster|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1049 clusterId=128
+    itEventId=1049 cluster_id=128
 
 Field Details:
 
@@ -445,18 +445,18 @@ IT Cluster Activity
 
 This event is emitted when data flows, previously clustered into an incident exhibit activity,
 i.e. executing sql statement(s).  Each event corresponds to a single data flow.
-The data flow is reported with the same fields defined used by the ITClusteredFlow
-event except the score specific fields, accessScore, contextScore, combinedScore,
-importance, and risk.  In addition, the following fields are supplied:
+The data flow is reported with the same fields defined used by the IT Clustered Flow
+event except the score specific fields, ``access_score``, ``context_score``, ``combined_score``,
+``importance``, and ``risk``.  In addition, the following fields are supplied:
 
 Example::
 
     <132>2017-08-08T16:39:47.865081-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|24|it_cluster_activity|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1044 clusterId=57 riskType=high flowId=1707 contextId=1672 userId=301 userName=system
-    clientId=298 client_realm=default client_ip=10.1.41.3 serviceId=1030 dialect=Oracle
-    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener_realm=default
-    listener_ip=11.1.3.32 port=1521 context_earliest=1504451400000 accessId=480 relationId=480
+    itEventId=1044 cluster_id=57 risk_type=high flow_id=1707 context_id=1672 user_id=301 user_name=system
+    client_id=298 client_realm=default client_ip=10.1.41.3 service_id=1030 dialect=Oracle
+    service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
+    listener_ip=11.1.3.32 port=1521 context_earliest=1504451400000 access_id=480 relation_id=480
     relation=customer mode=read access_earliest=1494377400000 flow_earliest=1504464600000
     activity_earliest=1505986500000 activity_latest=1506747900000 execs=493
 
@@ -477,19 +477,19 @@ IT Auto Learned
 +++++++++++++++
 
 This event is emitted when a data flow is learned by the autopilot, using the same
-fields as the ITClusteredFlow event except clusterId. This event is also disabled by
+fields as the IT Clustered Flow event except ``cluster_id``. This event is also disabled by
 default.
 
 Example::
 
     <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_auto_learned|7|
     cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1056 flowId=1804 contextId=1800 userId=300
-    userName=BOB clientId=572 client_realm=default client_ip=10.1.41.11 serviceId=1030 dialect=Oracle
-    serviceName=USCYBERCOM.OPSEC serviceType=service listenerId=1028 listener_realm=default
-    listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 accessId=317 relationId=317
+    itEventId=1056 flow_id=1804 context_id=1800 user_id=300
+    user_name=BOB client_id=572 client_realm=default client_ip=10.1.41.11 service_id=1030 dialect=Oracle
+    service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
+    listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 access_id=317 relation_id=317
     relation=personcreditcard mode=read access_earliest=1494273900000 flow_earliest=1506003300000
-    accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
+    access_score=0.999996204175 context_score=0 combined_score=0.999996204175 importance=1 risk=0.999996204175
 
 For field details see `IT Clustered Flow`_.
 
@@ -498,8 +498,8 @@ IT Policy Activity
 
 This event is emitted when data flows matching a committed policy constraint with
 a syslog category action exhibit activity, i.e. they execute sql statements.
-This event uses the same fields as the ITClusterActivity event, substituting
-constraintId, categoryId, and category for riskType:
+This event uses the same fields as the IT Cluster Activity event, substituting
+``constraint_id``, ``category_id``, and ``category`` for ``risk_type``:
 
 Field Details:
 
