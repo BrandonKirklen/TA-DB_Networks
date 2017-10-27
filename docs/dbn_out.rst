@@ -357,7 +357,7 @@ Details of the field types:
 =====================   ===========   ====================================================================================================
  it_event_id             int           Event ID for new clustered data flow
  cluster_id              int           Incident internal identifier for linking to DBN web interface
- flow_id                  int           Data flow internal identifier for linking to DBN web interface
+ flow_id                 int           Data flow internal identifier for linking to DBN web interface
  context_id              int           Session internal identifier for linking to DBN web interface
  user_id                 int           Session database user name internal identifier
  user_name               string        Session databse user name, e.g. "BOB"
