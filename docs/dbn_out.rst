@@ -81,8 +81,9 @@ contact customer service to investigate the cause.
 
 A typical message resembles the following::
 
-  <133>2017-03-14T18:57:33.449245-05:00 dbfw dbn: CEF:0|DB Networks|DBN|2.2.13|3|engine_start|
-  5|cs1Label=system identifier cs1=00:00:00:00:00:00
+  <133>2018-06-11T12:39:03.984166-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|3|engine_start|5|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423
+
 
 The message is identified by Signature ID= ``3`` and name= ``engine_start``.
 
@@ -103,11 +104,13 @@ A typical ``distinct_event`` resembles the following. A ``repeat_event`` has the
 
 ::
 
-  <133>2017-03-14T19:27:32.883848-05:00 dbfw dbn: CEF:0|DB Networks|DBN|2.2.13|0|distinct_event|
-  5|cs1Label=system identifier cs1=00:00:00:00:00:00 externalId=2737 cnt=1 rt=1489537652883
-  start=1336602182934 destinationServiceName=master cn1Label=statement identifier cn1=2736
-  cat=structural dst=10.10.10.77 dpt=1305 src=10.10.10.186 spt=3585 cs2Label=score cs2=0.500
-  cs3Label=confidence cs3=likely act=exec_dispatch target_sql_id=1099
+  <132>2018-06-11T16:28:53.769474-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|0|distinct_event|10|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 externalId=23179 
+  cnt=1 rt=1528752533769 start=1449230398145 destinationServiceName=accounts cn1Label=statement identifier 
+  cn1=22932 statement_identifier=22932 cat=structural dst=10.4.40.7 dpt=1433 src=10.15.32.25 spt=37224 
+  cs2Label=score cs2=1.000 score=1.000 cs3Label=confidence cs3=certain confidence=certain 
+  act=exec_dispatch target_sql_id=320
+
 
 The first part of the message contains the elements of the standard CEF format. The remainder is described below.
 
@@ -146,19 +149,16 @@ information useful to DB Networks' Customer Support personnel.
 
 Example ``cnt`` message::
 
-  <133>2017-03-14T19:27:30.140860-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|11|cnt|0|
-  cs1Label=system identifier cs1=unknown rt=1489537650140 xtime_T01=03/14/17 18:57:32
-  xtime_T02=03/14/17 19:27:30 xtime_T03=1 xtime_T04=0:29:58 xtime_T05=05/09/12 17:22:36
-  xcap_X13=0 xcap_X01=1928135 xcap_X02=0 xcap_X33=0 xcap_X14=0.00% xcap_X03=0 xcap_X12=0
-  xcap_X26=1291 xcap_X27=13847 xcap_X28=13478 xcap_X04=100.00% xcap_X15=0 xcap_X11=3307
-  xcap_X21=0.00% xpro_X08=369 xpro_X34=0 xpro_X17=57 xpro_X22=0 xpro_X23=0.00% xpro_X24=0.00%
-  xpro_X25=0 xpro_X16=312 xpro_X06=0 xpro_X10=0 xpro_X05=0.00% xpro_X09=0.00% xpro_X18=863932
-  xpro_X19=99.95% xpro_X20=0.06% xpro_X07=0 xeng_X29=1111 xeng_X30=381678 xeng_X31=758
-  xeng_X32=62 zpro_Z04=0 zpro_Z05=0.00% zpro_Z06=0.00% zpro_Z08=0.00% zpro_Z09=0.00%
-  zpro_Z07=0.00% zpro_Z01=0 zpro_Z02=0 zpro_Z03=0 zpro_Z10=0.00% zpro_Z11=0 zpro_Z12=0
-  zpro_Z13=0 zpro_Z14=0 zpro_Z15=0.01% zpro_Z16=349 zpro_Z17=5 zpro_Z18=0 zpro_Z19=0
-  zpro_Z22=-1960 zpro_Z23=0 zpro_Z24=359 zpro_Z25=4 zpro_Z26=6 zpro_Z27=0 zpro_Z28=0
-  zpro_Z29=0 zpro_Z30=0 ts=1489537650138
+  <133>2018-06-11T03:44:44.797928-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|11|cnt|0|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528706684797 xtime_T01=05/31/18 13:41:03 xtime_T02=06/11/18 03:44:44 xtime_T03=1 
+  xtime_T04=10d 14:03:41 xtime_T05=06/01/18 15:48:54 xcap_X13=49460224 xcap_X01=49460224 
+  xcap_X33=49460224 xcap_X03=6 xcap_X26=19 xcap_X27=61040 xcap_X28=61039 xcap_X04=1.00 
+  xcap_X15=6 xcap_X11=1895 xcap_X21=0.01 xpro_X08=1 xpro_X17=1 xpro_X23=0.00 xpro_X24=0.00 
+  xpro_X05=0.00 xpro_X09=0.00 xpro_X18=38287169 xpro_X19=1.00 xpro_X20=0.01 xpro_X35=406348 
+  xpro_X36=8 xpro_X37=61019 xpro_X38=221101 xpro_X39=7046 xeng_X29=92 xeng_X30=19025081 
+  xeng_X31=92 ts=1528706684796
+
 
 As with event messages, the first part of the messages contains the elements defined
 in the CEF format. Through most of the information in the various health log messages
@@ -181,40 +181,43 @@ useful to DB Networks customer support and development personnel if an issue ari
 
 ``sys``::
 
-  <133>2017-03-14T19:27:32.144918-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|12|sys|0|
-  cs1Label=system identifier cs1=unknown rt=1489537652144 os_uptime=19946 os_loadavg_0=1
-  os_loadavg_1=1 os_loadavg_2=0 os_freemem=940785664 os_totalmem=8339775488 sys_user=346203
-  sys_nice=153 sys_system=69859 sys_idle=7503488 sys_iowait=33658 sys_irq=7909 sys_softirq=7575
-  sys_steal=0 sys_guest=0 sys_guest_nice=0 vm_pgpgin=1636152 vm_pgpgout=14213713
-  vm_pswpin=0 vm_pswpout=0 vm_pgfault=126057794 meminfo_MemTotal=8144312 meminfo_MemFree=918736
-  meminfo_MemAvailable=6537620 meminfo_Buffers=300864 meminfo_Cached=5421820 meminfo_SwapCached=0
-  meminfo_Active=4977304 meminfo_Inactive=1817392 meminfo_Active(anon)=874512 meminfo_Inactive(anon)=292504
-  meminfo_Active(file)=4102792 meminfo_Inactive(file)=1524888 meminfo_Unevictable=0
-  meminfo_Mlocked=0 meminfo_SwapTotal=976892 meminfo_SwapFree=976892 meminfo_Dirty=1788
-  meminfo_Writeback=0 meminfo_AnonPages=1072004 meminfo_Mapped=481036 meminfo_Shmem=95012
-  meminfo_Slab=347176 meminfo_SReclaimable=296968 meminfo_SUnreclaim=50208
-  meminfo_KernelStack=6960 meminfo_PageTables=25816 meminfo_NFS_Unstable=0
-  meminfo_Bounce=0 meminfo_WritebackTmp=0 meminfo_CommitLimit=5049048 meminfo_Committed_AS=3431092
-  meminfo_VmallocTotal=34359738367 meminfo_VmallocUsed=0 meminfo_VmallocChunk=0
-  meminfo_HardwareCorrupted=0 meminfo_AnonHugePages=0 meminfo_ShmemHugePages=0
-  meminfo_ShmemPmdMapped=0 meminfo_CmaTotal=0 meminfo_CmaFree=0 meminfo_HugePages_Total=0
-  meminfo_HugePages_Free=0 meminfo_HugePages_Rsvd=0 meminfo_HugePages_Surp=0
-  meminfo_Hugepagesize=2048 meminfo_DirectMap4k=124736 meminfo_DirectMap2M=6154240
-  meminfo_DirectMap1G=2097152 memsum_usedGb=1 memsum_freeGb=6 disk_sda_readOps=70343
-  disk_sda_readSectors=3270248 disk_sda_writeOps=509080 disk_sda_writeSectors=28427427
+  <133>2018-06-11T03:49:47.332626-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|12|sys|0|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528706987332 os_uptime=914936 os_loadavg_0=0 os_loadavg_1=0 os_loadavg_2=0 os_freemem=833536000 
+  os_totalmem=8367423488 sys_user=1531705 sys_nice=9690 sys_system=744604 sys_idle=179829889 
+  sys_iowait=30758 sys_irq=276608 sys_softirq=265033 sys_steal=0 sys_guest=0 sys_guest_nice=0 
+  vm_pgpgin=931157 vm_pgpgout=105314097 vm_pswpin=0 vm_pswpout=0 vm_pgfault=542285262 
+  meminfo_MemTotal=8171312 meminfo_MemFree=814000 meminfo_MemAvailable=3852672 meminfo_Buffers=355684 
+  meminfo_Cached=2882872 meminfo_SwapCached=0 meminfo_Active=3055660 meminfo_Inactive=1970804 
+  meminfo_Active(anon)=1816472 meminfo_Inactive(anon)=28444 meminfo_Active(file)=1239188 
+  meminfo_Inactive(file)=1942360 meminfo_Unevictable=0 meminfo_Mlocked=0 meminfo_SwapTotal=976892 
+  meminfo_SwapFree=976892 meminfo_Dirty=496 meminfo_Writeback=0 meminfo_AnonPages=1787968 
+  meminfo_Mapped=2487416 meminfo_Shmem=71208 meminfo_Slab=179368 meminfo_SReclaimable=157068 
+  meminfo_SUnreclaim=22300 meminfo_KernelStack=4256 meminfo_PageTables=31900 meminfo_NFS_Unstable=0 
+  meminfo_Bounce=0 meminfo_WritebackTmp=0 meminfo_CommitLimit=5062548 meminfo_Committed_AS=4248612 
+  meminfo_VmallocTotal=34359738367 meminfo_VmallocUsed=0 meminfo_VmallocChunk=0 meminfo_HardwareCorrupted=0 
+  meminfo_AnonHugePages=0 meminfo_ShmemHugePages=0 meminfo_ShmemPmdMapped=0 meminfo_CmaTotal=0 
+  meminfo_CmaFree=0 meminfo_HugePages_Total=0 meminfo_HugePages_Free=0 meminfo_HugePages_Rsvd=0 
+  meminfo_HugePages_Surp=0 meminfo_Hugepagesize=2048 meminfo_DirectMap4k=157632 meminfo_DirectMap2M=8230912 
+  memsum_usedGb=4 memsum_freeGb=4 disk_sda_readOps=37129 disk_sda_readSectors=1860258 
+  disk_sda_writeOps=11382659 disk_sda_writeSectors=210640331
+
 
 ``slowsys``::
 
-  <133>2017-03-14T19:27:38.146333-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|13|slowsys|0|
-  cs1Label=system identifier cs1=unknown rt=1489537658145 disk_root_total=57521228
-  disk_root_avail=41946336 disk_boot_total=194235 disk_boot_avail=82772 disk_maint_total=2818080
-  disk_maint_avail=1583852 vers=0
+  <133>2018-06-11T03:49:51.565949-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|13|slowsys|0|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528706991565 disk_root_total=47103168 disk_root_avail=36005372 disk_maint_total=2818080 
+  disk_maint_avail=907268 disk_boot_total=194235 disk_boot_avail=79685 disk_sysdata_total=185301 
+  disk_sysdata_avail=162649 vers=0 it_sysdecCommitted=0 it_sysdecProposed=0
+
 
 ``dbfwsys``::
 
-  <133>2017-03-14T19:27:34.173796-05:00 dbfw dbn: CEF:0|Engineering|DBN|Dev Build|14|dbfwsys|0|
-  cs1Label=system identifier cs1=unknown rt=1489537654172 dbfw_pid=88958 dbfw_state=0
-  dbfw_userCpu=9344 dbfw_sysCpu=791 dbfw_numThread=21 dbfw_VmSize=940736512 dbfw_VmRSS=524038144
+  <133>2018-06-11T03:49:49.338516-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|14|dbfwsys|0|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528706989337 dbfw_pid=1884 dbfw_state=0 dbfw_userCpu=49031 dbfw_sysCpu=20857 
+  dbfw_numThread=19 dbfw_VmSize=2761003008 dbfw_VmRSS=303161344
 
 New Discovery Messages
 **********************
@@ -259,32 +262,36 @@ Example Messages:
 
 ``mds_new_user`` ::
 
-    <133>2017-03-14T19:00:22.970916-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|8|mds_new_user|5|
-    cs1Label=system identifier cs1=none rt=1489536022968 realm=default user_name=XXCC default_schema=XXCC
+  <133>2018-06-11T13:50:00.449964-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|6|mds_new_user|5|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528743000448 user_name=sa default_schema=sa
 
 
 ``mds_new_service`` ::
 
-    <133>2017-03-14T19:27:14.737219-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|7|mds_new_service|5|
-    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489537634735 service_name=master
-    service_name_type=service dialect=Sql Server
+  <133>2018-06-11T13:50:00.441856-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|7|mds_new_service|5|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528743000432 service_name=accounts service_name_type=service dialect=Sql-Server
 
 ``mds_new_host`` ::
 
-    <133>2017-03-13T19:52:09.712603-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|8|mds_new_host|5|
-    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489452729711 realm=default addr=10.0.0.1
+  <133>2018-06-11T13:50:00.446950-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|8|mds_new_host|5|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528743000444 realm=default addr=10.15.33.3
 
 ``mds_new_listener`` ::
 
-    <133>2017-03-14T19:00:22.988379-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|9|mds_new_listener|5|
-    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536022980 realm=default addr=10.0.0.1 port=1305
+  <133>2018-06-11T13:50:00.453014-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|9|mds_new_listener|5|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528743000433 realm=default addr=10.3.30.14 port=14338
 
 ``tally_new_ipseity`` ::
 
-    <133>2017-03-14T19:00:28.548773-05:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|10|tally_new_ipseity|5|
-    cs1Label=system identifier cs1=00:00:00:00:00:00 rt=1489536028542 tally_board=main service_name=master
-    client_realm=default client_addr=10.0.0.1 server_realm=default server_addr=10.0.0.2
-    server_port=1163 client_ipseities=0 server_ipseities=1 server_service_ipseities=0
+  <133>2018-06-11T13:50:00.773763-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|10|tally_new_ipseity|5|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528743000741 tally_board=main user_name=sa service_name=accounts client_realm=default 
+  client_addr=10.15.33.3 server_realm=default server_addr=10.4.40.7 server_port=1433 client_ipseities=1 
+  server_ipseities=1 server_service_ipseities=1 server_service_user_ipseities=1
 
 Audit Messages
 **************
@@ -295,9 +302,11 @@ described below.
 
 ``audit`` ::
 
-  <133>2017-04-26T18:59:11Z dbfw dbn: CEF:0|DB Networks|DBN|2.2.13|20|audit|0|
-  system_identifier=FW42-QA-0006 cs1Label=system identifier cs1=FW42-QA-0006 start=1493251151986 category=sysOps
-  auditCode=2030 auditMessage="Apply update" userId=admin sessionId=7rIowveGTOhxKmz6tTJQYmRzlvnZ5vou target="Update:P_2.2.13"
+  <133>2018-06-11T16: 53:05 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|20|audit|0|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  rt=1528753985039 category=secOps auditCode=1009 auditMessage="User login succeeded" 
+  userId=admin sessionId=2CTvwhj_iAmVoV7zB8pVCiLSeALej0te src=10.40.7.216 target="User:admin" 
+  cookies="[{"name":"dbnetworks","cookieDurationSec":3600}]"
 
 Audit syslog messages will have a ``category``, ``auditCode``, ``auditMessage``, ``userId``, ``sessionId`` and ``target`` when
 applicable. For more information about codes and messages, see :ref:`Audit Codes <auditCodes>`.
@@ -341,14 +350,14 @@ used by the autopilot to determine the data flow should be clustered.
 
 Example::
 
-    <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_clustered_flow|7|
-    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    it_event_id=1056 cluster_id=74 flow_id=1804 context_id=1800 user_id=300
-    user_name=BOB client_id=572 client_realm=default client_ip=10.1.41.11 service_id=1030 dialect=Oracle
-    service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
-    listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 access_id=317 relation_id=317
-    relation=personcreditcard mode=read access_earliest=1494273900000 flow_earliest=1506003300000
-    accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
+  <132>2018-06-11T13:50:00.773763-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|18|it_clustered_flow|7|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  it_event_id=1056 cluster_id=74 flow_id=1804 context_id=1800 user_id=300
+  user_name=BOB client_id=572 client_realm=default client_ip=10.1.41.11 service_id=1030 dialect=Oracle
+  service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
+  listener_ip=11.1.3.32 port=1521 context_earliest=1506003300000 access_id=317 relation_id=317
+  relation=personcreditcard mode=read access_earliest=1494273900000 flow_earliest=1506003300000
+  accessScore=0.999996204175 contextScore=0 combinedScore=0.999996204175 importance=1 risk=0.999996204175
 
 Details of the field types:
 
@@ -404,9 +413,9 @@ into new incidents to incorporate the new data flow
 
 Example::
 
-    <132>2017-08-08T16:39:48.041403-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|22|it_new_cluster|7|
-    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1047 cluster_id=127
+  <132>2018-06-11T13:50:00.773763-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|22|it_new_cluster|7|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  itEventId=1047 cluster_id=127
 
 Details of the two field types:
 
@@ -427,9 +436,9 @@ default.
 
 Example::
 
-    <132>2017-08-08T16:39:48.041407-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|23|it_obsolete_cluster|7|
-    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1049 cluster_id=128
+  <132>2018-06-11T13:50:00.773763-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|23|it_obsolete_cluster|7|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  itEventId=1049 cluster_id=128
 
 Field Details:
 
@@ -451,14 +460,14 @@ event except the score specific fields, ``access_score``, ``context_score``, ``c
 
 Example::
 
-    <132>2017-08-08T16:39:47.865081-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|24|it_cluster_activity|7|
-    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
-    itEventId=1044 cluster_id=57 risk_type=high flow_id=1707 context_id=1672 user_id=301 user_name=system
-    client_id=298 client_realm=default client_ip=10.1.41.3 service_id=1030 dialect=Oracle
-    service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
-    listener_ip=11.1.3.32 port=1521 context_earliest=1504451400000 access_id=480 relation_id=480
-    relation=customer mode=read access_earliest=1494377400000 flow_earliest=1504464600000
-    activity_earliest=1505986500000 activity_latest=1506747900000 execs=493
+  <132>2018-06-11T13:50:00.773763-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|24|it_cluster_activity|7|
+  cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
+  itEventId=1044 cluster_id=57 risk_type=high flow_id=1707 context_id=1672 user_id=301 user_name=system
+  client_id=298 client_realm=default client_ip=10.1.41.3 service_id=1030 dialect=Oracle
+  service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
+  listener_ip=11.1.3.32 port=1521 context_earliest=1504451400000 access_id=480 relation_id=480
+  relation=customer mode=read access_earliest=1494377400000 flow_earliest=1504464600000
+  activity_earliest=1505986500000 activity_latest=1506747900000 execs=493
 
 Field Details:
 
@@ -482,8 +491,8 @@ default.
 
 Example::
 
-    <132>2017-08-08T16:39:50.778927-07:00 dbfw dbn: CEF:0|DB Networks|DBN|Dev Build|18|it_auto_learned|7|
-    cs1Label=system identifier cs1=FW42-ED-VV-B-0000 system_identifier=FW42-ED-VV-B-0000
+    <132>2018-06-11T13:50:00.773763-05:00 dbfw dbn: CEF:0|DB Networks|DBN|4.2.4|18|it_auto_learned|7|
+    cs1Label=system identifier cs1=FW42-ED-VV-B-0423 system_identifier=FW42-ED-VV-B-0423 
     itEventId=1056 flow_id=1804 context_id=1800 user_id=300
     user_name=BOB client_id=572 client_realm=default client_ip=10.1.41.11 service_id=1030 dialect=Oracle
     service_name=USCYBERCOM.OPSEC service_type=service listener_id=1028 listener_realm=default
