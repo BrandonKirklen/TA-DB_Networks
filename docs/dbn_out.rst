@@ -25,6 +25,10 @@ Syslog Message Format:
  Message             Varies by event
 =================== ===================================
 
+Here is a genericised cef header as an example of the formatting::
+
+  CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
 Signature ID and Name Values
 ----------------------------
 
