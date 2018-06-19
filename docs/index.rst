@@ -1,8 +1,8 @@
-==============
-TA-DB_Networks
-==============
+===============
+TA-DB_CyberTech
+===============
 
-Latest documentation is posted on http://ta-db-networks.readthedocs.io
+Latest documentation is posted on http://ta-db-cybertech.readthedocs.io
 
 .. toctree::
    :caption: Table of Contents
