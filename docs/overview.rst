@@ -4,14 +4,14 @@ Overview
 About the TA
 ------------
 
-The DB Networks DBN-6300 uses syslog to provide event reporting to a central Security Information and Event Management 
+The DB CyberTech DBN-6300 uses syslog to provide event reporting to a central Security Information and Event Management 
 (SIEM) system and to report general system health information. Syslog output is encoded in the Common Event Format (CEF), 
 which allows easy integration into a number of common security information and event management (SIEM) andlog-analysis tools. 
-DB Networks can provide sample integration with popular tools. This manual describes the DBN-6300 syslog messages.
+DB CyberTech can provide sample integration with popular tools. This manual describes the DBN-6300 syslog messages.
 
 
 **App Author:**
-- Brandon Kirklen -- `Email <mailto:brandon.kirklen@dbnetworks.com>`_ - `Splunk Answers <https://answers.splunk.com/users/474440/brandonkirklen.html>`_ - `Github <https://github.com/BrandonKirklen>`_
+- Brandon Kirklen -- `Email <mailto:brandon.kirklen@dbcybertech.com>`_ - `Splunk Answers <https://answers.splunk.com/users/474440/brandonkirklen.html>`_ - `Github <https://github.com/BrandonKirklen>`_
 
 Splunk/DBN Version Compatibility
 --------------------------------
@@ -35,4 +35,4 @@ This TA is avalible on SplunkBase. Or you can clone this github repo into your `
 
 **Clone:**::
 
-  git clone https://github.com/DBNetworks/TA-DB_Networks.git TA-DB_Networks
+  git clone https://github.com/DBCyberTech/TA-DB_CyberTech TA-DB_CyberTech
